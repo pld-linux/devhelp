@@ -2,14 +2,15 @@
 Summary:	DevHelp is a developer's help program for GNOME
 Summary(pl):	Program pomocy dla programistów GNOME
 Name:		devhelp
-Version:	0.9.2
+Version:	0.9.3
 Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.9/%{name}-%{version}.tar.bz2
-# Source0-md5:	af4a26d243e5fecbb95db1b901ba47d4
+# Source0-md5:	71833b565e83d5f23d012b2691d73b29
 Patch0:		%{name}-bookdir.patch
-Patch1:		%{name}-mozilla_home.patch
+Patch1:		%{name}-mozilla.patch
+Patch2:		%{name}-mozilla_includes.patch
 URL:		http://www.imendio.com/projects/devhelp/
 BuildRequires:	GConf2-devel
 BuildRequires:	autoconf
@@ -75,6 +76,7 @@ Statyczna biblioteka Devhelp.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 %{__libtoolize}
