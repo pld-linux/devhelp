@@ -5,11 +5,6 @@ Version:	0.3
 Release:	1
 License:	GPL
 Group:		X11/Applications
-Group(de):	X11/Applikationen
-Group(es):	X11/Aplicaciones
-Group(pl):	X11/Aplikacje
-Group(pt_BR):	X11/Aplicações
-Group(pt):	X11/Aplicações
 Source0:	http://www.devhelp.net/download/%{name}-%{version}.tar.gz
 URL:		http://www.devhelp.net/
 BuildRequires:	glib-devel >= 1.2.9
