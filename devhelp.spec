@@ -2,7 +2,7 @@ Summary:	DevHelp is a developer's help program for GNOME
 Summary(pl):	Program pomocy dla developerów GNOME
 Name:		devhelp
 Version:	0.3
-Release:	1
+Release:	1.1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://www.devhelp.net/download/%{name}-%{version}.tar.gz
@@ -42,10 +42,9 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/gconf
 
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT \
-#	Applicationsdir=%{_applnkdir}/Office/PIMs
+	DESTDIR=$RPM_BUILD_ROOT 
 
-gzip -9nf AUTHORS ChangeLog NEWS README THANKS TODO
+gzip -9nf AUTHORS ChangeLog NEWS README TODO
 
 %find_lang %{name}
 
@@ -55,10 +54,13 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc *.gz
-%attr(755,root,root) %{_bindir}/yank
-%dir %{_libdir}/yank/plugins/%{version}
-%dir %{_libdir}/yank/plugins
-%dir %{_libdir}/yank
+%attr(755,root,root) %{_bindir}/devhelp
+%dir %{_libdir}/*
+%dir %{_prefix}/share/
+%dir %{_prefix}/share/%{name}/glade/*
+%dir %{_prefix}/share/gnome/apps/Development/*
+%dir %{_prefix}/share/gnome/ui/*
+%dir %{_prefix}/share/images/%{name}/*
+%dir %{_prefix}/share/oaf/*
+%dir %{_prefix}/share/pixmaps/*
 %{_sysconfdir}/*/*/*
-%{_pixmapsdir}/yank.png
-%{_applnkdir}/Office/PIMs/yank.desktop
