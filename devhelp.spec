@@ -8,11 +8,14 @@ Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.7/%{name}-%{version}.tar.bz2
 # Source0-md5:	7391578353368d9db3ed6a74f4128754
 Patch0:		%{name}-bookdir.patch
+Patch1:		%{name}-enable-deprecated.patch
 URL:		http://www.imendio.com/projects/devhelp/
+BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gnome-vfs2-devel
 BuildRequires:	libgnomeui-devel >= 2.3.3.1-2
 BuildRequires:	libgtkhtml-devel >= 2.2.1
+BuildRequires:	libtool
 BuildRequires:	zlib-devel
 Requires:	libgtkhtml >= 2.2.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -26,9 +29,15 @@ Program pomocy dla programistów GNOME.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 cp /usr/share/automake/config.sub .
+%{__libtoolize}
+%{__aclocal} -I %{_aclocaldir}/gnome2-macros
+%{__autoconf}
+%{__autoheader}
+%{__automake}
 %configure \
 	--disable-install-schemas
 %{__make}
