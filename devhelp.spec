@@ -6,6 +6,7 @@ Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://www.devhelp.net/download/%{name}-%{version}.tar.gz
+Patch0:		%{name}-desktop.patch
 URL:		http://www.devhelp.net/
 BuildRequires:	autoconf
 BuildRequires:	gnome-vfs2-devel
@@ -22,6 +23,7 @@ Program pomocy dla developerów GNOME.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__autoconf}
