@@ -25,7 +25,7 @@ BuildRequires:	mozilla-devel >= %{minmozver}
 BuildRequires:	zlib-devel
 Requires(post,postun):	GConf2
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	mozilla =  %(rpm -q --qf '%{EPOCH}:%{VERSION}' --whatprovides mozilla)
+Requires:	mozilla = %(rpm -q --qf '%{EPOCH}:%{VERSION}' --whatprovides mozilla)
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # can be provided by mozilla or mozilla-embedded
@@ -109,8 +109,8 @@ rm -rf $RPM_BUILD_ROOT
 %postun
 %gconf_schema_install
 
-%post   libs -p /sbin/ldconfig
-%postun libs -p /sbin/ldconfig
+%post	libs -p /sbin/ldconfig
+%postun	libs -p /sbin/ldconfig
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
