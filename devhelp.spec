@@ -7,12 +7,13 @@ License:	GPL
 Group:		X11/Applications
 Source0:	http://www.devhelp.net/download/%{name}-%{version}.tar.gz
 Patch0:		%{name}-desktop.patch
+Patch1:		%{name}-bookdir.patch
 URL:		http://www.devhelp.net/
-BuildRequires:	autoconf
 BuildRequires:	gnome-vfs2-devel
 BuildRequires:	libgnomeui-devel
-BuildRequires:	libgtkhtml-devel
+BuildRequires:	libgtkhtml-devel >= 2.2.1
 BuildRequires:	zlib-devel
+Requires:	libgtkhtml >= 2.2.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -24,9 +25,9 @@ Program pomocy dla developerów GNOME.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
-%{__autoconf}
 %configure \
 	--disable-install-schemas
 %{__make}
