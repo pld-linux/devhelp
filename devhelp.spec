@@ -9,14 +9,16 @@ Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.8/%{name}-%{version}.t
 # Source0-md5:	16885ffa39dc7a71d98bc838998b9b90
 Patch0:		%{name}-bookdir.patch
 Patch1:		%{name}-enable-deprecated.patch
+Patch2:		%{name}-locale-names.patch
 URL:		http://www.imendio.com/projects/devhelp/
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	gnome-vfs2-devel
-BuildRequires:	libgnomeui-devel >= 2.3.3.1-2
+BuildRequires:	gnome-vfs2-devel >= 2.4.0
+BuildRequires:	libgnomeui-devel >= 2.4.0
 BuildRequires:	libgtkhtml-devel >= 2.2.1
 BuildRequires:	libtool
 BuildRequires:	zlib-devel
+Requires:	%{name}-libs = %{version}-%{release}
 Requires:	libgtkhtml >= 2.2.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -26,34 +28,48 @@ DevHelp is a developer's help program for GNOME.
 %description -l pl
 Program pomocy dla programistów GNOME.
 
+%package libs
+Summary:	Library to embed Devhelp in other applications
+Summary(pl):	Biblioteka do osadzania Devhelp w innych aplikacjach
+Group:		Libraries
+
+%description libs
+Library of Devhelp for embedding into other applications..
+
+%description libs -l pl
+Biblioteka Devhelp do osadzania w innych aplikacjach..
+
 %package devel
-Summary:        Library to embed Devhelp in other applications
-Summary(pl):    Biblioteka do osadzania Devhelp w innych aplikacjach
-Group:          X11/Development/Libraries
-Requires:       %{name} = %{version}
+Summary:	Headers for Devhelp library
+Summary(pl):	Pliki nag³ówkowe biblioteki Devhelp
+Group:		Development/Libraries
+Requires:	%{name}-libs = %{version}-%{release}
 
 %description devel
-Library of Devhelp for embedding into other applications.
+Headers for Devhelp library.
 
 %description devel -l pl
-Biblioteka Devhelp do osadzania w innych aplikacjach.
+Pliki nag³ówkowe biblioteki Devhelp.
 
 %package static
-Summary:        Static library of Devhelp
-Summary(pl):    Biblioteka statyczna Devhelp
-Group:          X11/Development/Libraries
-Requires:       %{name}-devel = %{version}
+Summary:	Static Devhelp library
+Summary(pl):	Statyczna biblioteka Devhelp
+Group:		Development/Libraries
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
-Static library of Devhelp.
+Static version of Devhelp library.
 
 %description static -l pl
-Biblioteka statyczna Devhelp.
+Statyczna biblioteka Devhelp.
 
 %prep
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
+
+mv po/{no,nb}.po
 
 %build
 cp /usr/share/automake/config.sub .
@@ -79,27 +95,29 @@ install -d $RPM_BUILD_ROOT%{_sysconfdir}/gconf \
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post -p /sbin/ldconfig
-
-%postun -p /sbin/ldconfig
+%post   libs -p /sbin/ldconfig
+%postun libs -p /sbin/ldconfig
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README TODO
 %attr(755,root,root) %{_bindir}/devhelp
-%attr(755,root,root) %{_libdir}/*.so.*.*.*
 %{_datadir}/%{name}
 %{_datadir}/mime-info/*
 %{_desktopdir}/*.desktop
 %{_pixmapsdir}/*
 
+%files libs
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/lib*.so.*.*
+
 %files devel
 %defattr(644,root,root,755)
-%{_includedir}/devhelp*
-%{_libdir}/*.so
-%{_libdir}/*.la
-%{_pkgconfigdir}/*
+%attr(755,root,root) %{_libdir}/lib*.so
+%{_libdir}/lib*.la
+%{_pkgconfigdir}/*.pc
+%{_includedir}/*
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/*.a
+%{_libdir}/lib*.a
