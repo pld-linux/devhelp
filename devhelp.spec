@@ -4,9 +4,9 @@ Summary(pl):	Program pomocy dla programistów GNOME
 Name:		devhelp
 Version:	0.9.3
 Release:	4
-License:	GPL
+License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.9/%{name}-%{version}.tar.bz2
+Source0:	http://ftp.gnome.org/pub/gnome/sources/devhelp/0.9/%{name}-%{version}.tar.bz2
 # Source0-md5:	71833b565e83d5f23d012b2691d73b29
 Patch0:		%{name}-bookdir.patch
 Patch1:		%{name}-mozilla.patch
@@ -18,11 +18,12 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gnome-common >= 2.8.0
 BuildRequires:	gnome-vfs2-devel >= 2.10.0-2
-BuildRequires:	gtk+2-devel >= 2:2.4.4
-BuildRequires:	libglade2-devel >= 2.0.0
-BuildRequires:	libgnomeui-devel >= 2.4.0
+BuildRequires:	gtk+2-devel >= 2:2.6.3
+BuildRequires:	libglade2-devel >= 1:2.5.1
+BuildRequires:	libgnomeui-devel >= 2.10.0-2
 BuildRequires:	libtool
 BuildRequires:	mozilla-devel >= %{minmozver}
+BuildRequires:	pkgconfig
 BuildRequires:	zlib-devel
 Requires(post,postun):	GConf2
 Requires:	%{name}-libs = %{version}-%{release}
