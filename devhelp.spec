@@ -3,7 +3,7 @@ Summary:	DevHelp is a developer's help program for GNOME
 Summary(pl):	Program pomocy dla programistów GNOME
 Name:		devhelp
 Version:	0.9.3
-Release:	2
+Release:	3
 License:	GPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.9/%{name}-%{version}.tar.bz2
