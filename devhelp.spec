@@ -8,7 +8,7 @@ Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.7/%{name}-%{version}.tar.bz2
 # Source0-md5:	7391578353368d9db3ed6a74f4128754
 Patch0:		%{name}-bookdir.patch
-URL:		http://www.devhelp.net/
+URL:		http://www.imendio.com/projects/devhelp/
 BuildRequires:	gnome-vfs2-devel
 BuildRequires:	libgnomeui-devel >= 2.3.3.1-2
 BuildRequires:	libgtkhtml-devel >= 2.2.1
