@@ -10,6 +10,7 @@ URL:		http://www.devhelp.net/
 BuildRequires:	GConf-devel >= 0.12
 BuildRequires:	ORBit-devel >= 0.5.7
 BuildRequires:	autoconf
+BuildRequires:	gdk-pixbuf-gnome-devel >= 0.18.0
 BuildRequires:	glib-devel >= 1.2.9
 BuildRequires:	gnome-libs-devel >= 1.2.8
 BuildRequires:	gnome-print-devel >= 0.29
