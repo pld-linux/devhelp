@@ -1,12 +1,12 @@
-diff -urN devhelp-0.6.0.orig/src/dh-base.c devhelp-0.6.0/src/dh-base.c
---- devhelp-0.6.0.orig/src/dh-base.c	Fri Apr 25 10:33:10 2003
-+++ devhelp-0.6.0/src/dh-base.c	Fri Apr 25 10:34:50 2003
-@@ -155,7 +155,7 @@
+diff -urN devhelp-0.7.orig/src/dh-base.c devhelp-0.7/src/dh-base.c
+--- devhelp-0.7.orig/src/dh-base.c	Sun Jun 29 20:26:08 2003
++++ devhelp-0.7/src/dh-base.c	Sun Jun 29 20:27:33 2003
+@@ -222,7 +222,7 @@
  	
- 	/* Insert the books from default gtk-doc install path */
- 	base_add_books (base, DATADIR"/gtk-doc/html");
+ 	/* Insert the books from default gtk-doc install path. */
+ 	base_add_books (base, DATADIR "/gtk-doc/html");
 -	base_add_books (base, "/usr/share/gtk-doc/html");
 +	base_add_books (base, "/usr/share/doc/gtk-doc/html");
- 	base_add_books (base, DATADIR"/devhelp/books");
- 	dir = g_strconcat (g_getenv ("HOME"), "/.devhelp/books", NULL);
+ 	base_add_books (base, DATADIR "/devhelp/books");
+ 	dir = g_build_filename (g_get_home_dir (), ".devhelp", "books", NULL);
  	base_add_books (base, dir);
