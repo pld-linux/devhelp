@@ -1,7 +1,7 @@
 Summary:	DevHelp is a developer's help program for GNOME
 Summary(pl):	Program pomocy dla developerów GNOME
 Name:		devhelp
-Version:	0.3
+Version:	0.4
 Release:	1
 License:	GPL
 Group:		X11/Applications
@@ -49,8 +49,6 @@ install -d $RPM_BUILD_ROOT%{_sysconfdir}/gconf \
 
 mv -f $RPM_BUILD_ROOT%{_datadir}/gnome/apps $RPM_BUILD_ROOT%{_applnkdir}
 
-gzip -9nf AUTHORS ChangeLog NEWS README TODO
-
 %find_lang %{name}
 
 %clean
@@ -58,9 +56,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc *.gz
+%doc AUTHORS ChangeLog NEWS README TODO
 %attr(755,root,root) %{_bindir}/devhelp
-%dir %{_libdir}/*
+%dir %{_libdir}/*/*
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/books
 %dir %{_datadir}/%{name}/specs
