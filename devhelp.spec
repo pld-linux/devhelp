@@ -41,6 +41,9 @@ install -d $RPM_BUILD_ROOT%{_sysconfdir}/gconf \
 
 %find_lang %{name}
 
+# shut up check-files
+rm -f $RPM_BUILD_ROOT%{_libdir}/devhelp/*.{a,la}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -48,7 +51,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README TODO
 %attr(755,root,root) %{_bindir}/devhelp
-%dir %{_libdir}/*/*
+%dir %{_libdir}/devhelp
+%attr(755,root,root) %{_libdir}/devhelp/*.so
 %{_datadir}/%{name}
 %{_datadir}/mime-info/*
 %{_desktopdir}/*.desktop
