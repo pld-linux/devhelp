@@ -1,0 +1,11 @@
+diff -Nru devhelp-0.7.orig/libegg/menu/Makefile.am devhelp-0.7/libegg/menu/Makefile.am
+--- devhelp-0.7.orig/libegg/menu/Makefile.am	2003-06-29 13:11:50.000000000 +0200
++++ devhelp-0.7/libegg/menu/Makefile.am	2004-01-19 14:03:24.323220280 +0100
+@@ -2,7 +2,6 @@
+ INCLUDES = \
+   $(EGG_CFLAGS) \
+   -DEGG_COMPILATION \
+-  -DGTK_DISABLE_DEPRECATED \
+   -DGDK_DISABLE_DEPRECATED \
+   -DG_DISABLE_DEPRECATED \
+   -I$(top_srcdir)
