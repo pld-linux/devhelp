@@ -13,6 +13,7 @@ BuildRequires:	gnome-vfs2-devel
 BuildRequires:	libgnomeui-devel >= 2.3.3.1-2
 BuildRequires:	libgtkhtml-devel >= 2.2.1
 BuildRequires:	zlib-devel
+BuildRequires:	xft-devel
 Requires:	libgtkhtml >= 2.2.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
