@@ -49,7 +49,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog NEWS README TODO
 %attr(755,root,root) %{_bindir}/devhelp
 %dir %{_libdir}/*/*
-%{_datadir}/applications/*.desktop
 %{_datadir}/%{name}
 %{_datadir}/mime-info/*
+%{_desktopdir}/*.desktop
 %{_pixmapsdir}/*
