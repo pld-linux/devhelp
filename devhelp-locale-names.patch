@@ -1,0 +1,12 @@
+diff -urN aa/devhelp-0.8.1/configure.in devhelp-0.8.1/configure.in
+--- aa/devhelp-0.8.1/configure.in	2004-02-13 13:51:13.000000000 +0100
++++ devhelp-0.8.1/configure.in	2004-02-13 14:29:05.710816144 +0100
+@@ -86,7 +86,7 @@
+ CPPFLAGS=${_cppflags}
+ LDFLAGS=${_ldflags}
+ 
+-ALL_LINGUAS="am az be ca cs da de el es fr he hi is it ja kn ko lv ml ms nl no pl pt pt_BR ru sk sr sr@Latn sv tr uk vi zh_CN zh_TW"
++ALL_LINGUAS="am az be ca cs da de el es fr he hi is it ja kn ko lv ml ms nb nl pl pt pt_BR ru sk sr sr@Latn sv tr uk vi zh_CN zh_TW"
+ 
+ GETTEXT_PACKAGE=devhelp
+ AC_SUBST(GETTEXT_PACKAGE)
