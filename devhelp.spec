@@ -7,15 +7,16 @@ License:	GPL
 Group:		X11/Applications
 Source0:	http://www.devhelp.net/download/%{name}-%{version}.tar.gz
 URL:		http://www.devhelp.net/
+BuildRequires:	GConf-devel >= 0.12
+BuildRequires:	ORBit-devel >= 0.5.7
+BuildRequires:	autoconf
 BuildRequires:	glib-devel >= 1.2.9
+BuildRequires:	gnome-libs-devel >= 1.2.8
+BuildRequires:	gnome-print-devel >= 0.29
+BuildRequires:	gnome-vfs-devel >= 1.0.0
+BuildRequires:	gtkhtml-devel >= 0.10.0
 BuildRequires:	gtk+-devel >= 1.2.9
 BuildRequires:	libxml-devel >= 1.8.10
-BuildRequires:	gnome-vfs-devel >= 1.0.0
-BuildRequires:	ORBit-devel >= 0.5.7
-BuildRequires:	gnome-libs-devel >= 1.2.8
-BuildRequires:	GConf-devel >= 0.12
-BuildRequires:	gtkhtml-devel >= 0.10.0
-BuildRequires:	gnome-print-devel >= 0.29
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
@@ -32,7 +33,8 @@ Program pomocy dla developerów GNOME.
 %setup -q
 
 %build
-%configure2_13 \
+autoconf
+%configure \
 	--disable-install-schemas
 %{__make}
 
