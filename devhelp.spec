@@ -1,25 +1,28 @@
 Summary:	DevHelp is a developer's help program for GNOME
 Summary(pl):	Program pomocy dla programistów GNOME
 Name:		devhelp
-Version:	0.8.1
+Version:	0.9
 Release:	1
 License:	GPL
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.8/%{name}-%{version}.tar.bz2
-# Source0-md5:	16885ffa39dc7a71d98bc838998b9b90
+Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.9/%{name}-%{version}.tar.bz2
+# Source0-md5:	cc1394c8738b91e7b95943a60977759f
 Patch0:		%{name}-bookdir.patch
-Patch1:		%{name}-enable-deprecated.patch
-Patch2:		%{name}-locale-names.patch
+Patch1:		%{name}-locale-names.patch
 URL:		http://www.imendio.com/projects/devhelp/
+BuildRequires:	GConf2-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gnome-vfs2-devel >= 2.4.0
+BuildRequires:	gtk+2-devel >= 2.3.1
+BuildRequires:	libglade2-devel >= 2.0.0
 BuildRequires:	libgnomeui-devel >= 2.4.0
-BuildRequires:	libgtkhtml-devel >= 2.2.1
 BuildRequires:	libtool
+BuildRequires:	mozilla-devel >= 1.6
 BuildRequires:	zlib-devel
+Requires(post,postun):	GConf2
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	libgtkhtml >= 2.2.1
+Requires:	mozilla >= 1.6
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -67,7 +70,6 @@ Statyczna biblioteka Devhelp.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 mv po/{no,nb}.po
 
@@ -95,17 +97,24 @@ install -d $RPM_BUILD_ROOT%{_sysconfdir}/gconf \
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%post
+%gconf_schema_install
+
+%postun
+%gconf_schema_install
+
 %post   libs -p /sbin/ldconfig
 %postun libs -p /sbin/ldconfig
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README TODO
-%attr(755,root,root) %{_bindir}/devhelp
+%attr(755,root,root) %{_bindir}/devhelp*
 %{_datadir}/%{name}
 %{_datadir}/mime-info/*
 %{_desktopdir}/*.desktop
 %{_pixmapsdir}/*
+%{_sysconfdir}/gconf/schemas/*
 
 %files libs
 %defattr(644,root,root,755)
