@@ -33,7 +33,7 @@ Program pomocy dla developerów GNOME.
 %setup -q
 
 %build
-autoconf
+%{__autoconf}
 %configure \
 	--disable-install-schemas
 %{__make}
