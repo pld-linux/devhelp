@@ -44,6 +44,8 @@ install -d $RPM_BUILD_ROOT%{_sysconfdir}/gconf
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT 
 
+mv -f $RPM_BUILD_ROOT/usr/X11R6/share/gnome/apps $RPM_BUILD_ROOT/usr/X11R6/share/applnk
+
 gzip -9nf AUTHORS ChangeLog NEWS README TODO
 
 %find_lang %{name}
@@ -58,7 +60,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/*
 %dir %{_prefix}/share/
 %{_prefix}/share/%{name}/glade
-%{_prefix}/share/gnome/apps/Development
+%{_prefix}/share/applnk/Development
 %{_prefix}/share/gnome/ui
 %{_prefix}/share/images/%{name}
 %{_prefix}/share/oaf
