@@ -1,12 +1,13 @@
+%define		minmozver	5:1.7
 Summary:	DevHelp is a developer's help program for GNOME
 Summary(pl):	Program pomocy dla programistów GNOME
 Name:		devhelp
-Version:	0.9
-Release:	4
+Version:	0.9.1
+Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.9/%{name}-%{version}.tar.bz2
-# Source0-md5:	cc1394c8738b91e7b95943a60977759f
+# Source0-md5:	2d6358178bbb4e74cf564b7c608d46fa
 Patch0:		%{name}-bookdir.patch
 Patch1:		%{name}-locale-names.patch
 Patch2:		%{name}-mozilla_home.patch
@@ -15,16 +16,19 @@ BuildRequires:	GConf2-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gnome-vfs2-devel >= 2.4.0
-BuildRequires:	gtk+2-devel >= 2:2.4.0
+BuildRequires:	gtk+2-devel >= 2:2.4.4
 BuildRequires:	libglade2-devel >= 2.0.0
 BuildRequires:	libgnomeui-devel >= 2.4.0
 BuildRequires:	libtool
-BuildRequires:	mozilla-devel >= 1.6
+BuildRequires:	mozilla-devel >= %{minmozver}
 BuildRequires:	zlib-devel
 Requires(post,postun):	GConf2
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	mozilla =  %(rpm -q --qf '%{EPOCH}:%{VERSION}' --whatprovides mozilla)
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+# can be provided by mozilla or mozilla-embedded
+%define		_noautoreqdep	libgtkembedmoz.so libxpcom.so
 
 %description
 DevHelp is a developer's help program for GNOME.
