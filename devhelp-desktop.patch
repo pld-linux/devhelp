@@ -1,0 +1,10 @@
+diff -urN devhelp-0.9.3.orig/devhelp.desktop.in devhelp-0.9.3/devhelp.desktop.in
+--- devhelp-0.9.3.orig/devhelp.desktop.in	2004-11-17 11:46:51.301707224 +0100
++++ devhelp-0.9.3/devhelp.desktop.in	2004-11-17 11:47:10.118846584 +0100
+@@ -6,5 +6,5 @@
+ Terminal=false
+ Type=Application
+ Icon=devhelp.png
+-Categories=GNOME;Application;Development;
++Categories=GTK;GNOME;Development;
+ StartupNotify=true
