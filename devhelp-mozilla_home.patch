@@ -1,0 +1,12 @@
+diff -urN aa/devhelp-0.9/devhelp.in devhelp-0.9/devhelp.in
+--- aa/devhelp-0.9/devhelp.in	2004-03-15 15:22:54.000000000 +0100
++++ devhelp-0.9/devhelp.in	2004-03-20 23:35:47.531242760 +0100
+@@ -2,7 +2,7 @@
+ 
+ dist_bin=`dirname $0`
+ 
+-MOZILLA_HOME=@MOZILLA_HOME@
++MOZILLA_HOME=/usr/lib/mozilla
+ 
+ LD_LIBRARY_PATH=$MOZILLA_HOME:$LD_LIBRARY_PATH
+ 
