@@ -1,12 +1,12 @@
 Summary:	DevHelp is a developer's help program for GNOME
 Summary(pl):	Program pomocy dla programistów GNOME
 Name:		devhelp
-Version:	0.8
+Version:	0.8.1
 Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.8/%{name}-%{version}.tar.bz2
-# Source0-md5:	83e2521ac66288996d3907d51be413a4
+# Source0-md5:	16885ffa39dc7a71d98bc838998b9b90
 Patch0:		%{name}-bookdir.patch
 Patch1:		%{name}-enable-deprecated.patch
 URL:		http://www.imendio.com/projects/devhelp/
