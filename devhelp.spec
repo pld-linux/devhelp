@@ -6,6 +6,7 @@ Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.6/%{name}-%{version}.tar.bz2
+# Source0-md5:	550483a3717f8bc58d0f3bfdab57413f
 Patch0:		%{name}-bookdir.patch
 URL:		http://www.devhelp.net/
 BuildRequires:	gnome-vfs2-devel
