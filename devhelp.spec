@@ -40,13 +40,13 @@ autoconf
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
-install -d $RPM_BUILD_ROOT%{_sysconfdir}/gconf
+install -d $RPM_BUILD_ROOT%{_sysconfdir}/gconf \
+	$RPM_BUILD_ROOT%{_datadir}/%{name}/{books,specs}}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT 
 
-mv -f $RPM_BUILD_ROOT/usr/X11R6/share/gnome/apps $RPM_BUILD_ROOT/usr/X11R6/share/applnk
+mv -f $RPM_BUILD_ROOT%{_datadir}/gnome/apps $RPM_BUILD_ROOT%{_applnkdir}
 
 gzip -9nf AUTHORS ChangeLog NEWS README TODO
 
@@ -60,11 +60,13 @@ rm -rf $RPM_BUILD_ROOT
 %doc *.gz
 %attr(755,root,root) %{_bindir}/devhelp
 %dir %{_libdir}/*
-%dir %{_prefix}/share/
-%{_prefix}/share/%{name}/glade
-%{_prefix}/share/applnk/Development
-%{_prefix}/share/gnome/ui
-%{_prefix}/share/images/%{name}
-%{_prefix}/share/oaf
-%{_prefix}/share/pixmaps
+%dir %{_datadir}/%{name}
+%dir %{_datadir}/%{name}/books
+%dir %{_datadir}/%{name}/specs
+%{_datadir}/%{name}/glade
+%{_applnkdir}/Development/*
+%{_datadir}/gnome/ui/*
+%{_datadir}/images/%{name}
+%{_datadir}/oaf/*
+%{_pixmapsdir}/*
 %{_sysconfdir}/*/*/*
