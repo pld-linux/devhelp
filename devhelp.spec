@@ -15,6 +15,7 @@ URL:		http://www.imendio.com/projects/devhelp/
 BuildRequires:	GConf2-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	gnome-common >= 2.8.0
 BuildRequires:	gnome-vfs2-devel >= 2.4.0
 BuildRequires:	gtk+2-devel >= 2:2.4.4
 BuildRequires:	libglade2-devel >= 2.0.0
@@ -80,9 +81,8 @@ Statyczna biblioteka Devhelp.
 mv po/{no,nb}.po
 
 %build
-cp /usr/share/automake/config.sub .
 %{__libtoolize}
-%{__aclocal} -I %{_aclocaldir}/gnome2-macros
+%{__aclocal}
 %{__autoconf}
 %{__autoheader}
 %{__automake}
