@@ -37,7 +37,7 @@ install -d $RPM_BUILD_ROOT%{_sysconfdir}/gconf \
 	$RPM_BUILD_ROOT%{_datadir}/%{name}/{books,specs}
 
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT 
+	DESTDIR=$RPM_BUILD_ROOT
 
 %find_lang %{name}
 
