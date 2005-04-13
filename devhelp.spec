@@ -3,7 +3,7 @@ Summary:	DevHelp is a developer's help program for GNOME
 Summary(pl):	Program pomocy dla programistów GNOME
 Name:		devhelp
 Version:	0.9.3
-Release:	4
+Release:	5
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/devhelp/0.9/%{name}-%{version}.tar.bz2
@@ -18,14 +18,15 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gnome-common >= 2.8.0
 BuildRequires:	gnome-vfs2-devel >= 2.10.0-2
-BuildRequires:	gtk+2-devel >= 2:2.6.3
+BuildRequires:	gtk+2-devel >= 2:2.6.4
 BuildRequires:	libglade2-devel >= 1:2.5.1
 BuildRequires:	libgnomeui-devel >= 2.10.0-2
 BuildRequires:	libtool
 BuildRequires:	mozilla-devel >= %{minmozver}
 BuildRequires:	pkgconfig
+BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	zlib-devel
-Requires(post,postun):	GConf2
+Requires(post,preun):	GConf2
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	mozilla = %(rpm -q --qf '%{EPOCH}:%{VERSION}' --whatprovides mozilla)
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -99,6 +100,8 @@ install -d $RPM_BUILD_ROOT%{_sysconfdir}/gconf \
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+rm -rf $RPM_BUILD_ROOT%{_datadir}/mime-info
+
 rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
 
 %find_lang %{name}
@@ -107,10 +110,10 @@ rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%gconf_schema_install
+%gconf_schema_install devhelp.schemas
 
-%postun
-%gconf_schema_install
+%preun
+%gconf_schema_uninstall devhelp.schemas
 
 %post	libs -p /sbin/ldconfig
 %postun	libs -p /sbin/ldconfig
@@ -120,7 +123,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog NEWS README TODO
 %attr(755,root,root) %{_bindir}/devhelp*
 %{_datadir}/%{name}
-%{_datadir}/mime-info/*
 %{_desktopdir}/*.desktop
 %{_pixmapsdir}/*
 %{_sysconfdir}/gconf/schemas/*
