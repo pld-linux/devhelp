@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_with	mozilla_firefox	# build with mozilla-firefox-devel
+#
 %define		minmozver	5:1.7
 Summary:	DevHelp is a developer's help program for GNOME
 Summary(pl):	Program pomocy dla programistów GNOME
@@ -21,13 +25,21 @@ BuildRequires:	gnome-vfs2-devel >= 2.10.0-2
 BuildRequires:	gtk+2-devel >= 2:2.6.4
 BuildRequires:	libglade2-devel >= 1:2.5.1
 BuildRequires:	libtool
+%if %{with mozilla_firefox}
+BuildRequires:	mozilla-firefox-devel
+%else
 BuildRequires:	mozilla-devel >= %{minmozver}
+%endif
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	zlib-devel
 Requires(post,preun):	GConf2
 Requires:	%{name}-libs = %{version}-%{release}
+%if %{with mozilla_firefox}
+Requires:	mozilla-firefox = %(rpm -q --qf '%{EPOCH}:%{VERSION}' mozilla-firefox)
+%else
 Requires:	mozilla = %(rpm -q --qf '%{EPOCH}:%{VERSION}' --whatprovides mozilla)
+%endif
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # can be provided by mozilla or mozilla-embedded
