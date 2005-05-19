@@ -36,7 +36,7 @@ BuildRequires:	zlib-devel
 Requires(post,preun):	GConf2
 Requires:	%{name}-libs = %{version}-%{release}
 %if %{with mozilla_firefox}
-Requires:	mozilla-firefox = %(rpm -q --qf '%{EPOCH}:%{VERSION}' mozilla-firefox)
+%requires_eq	mozilla-firefox
 %else
 Requires:	mozilla = %(rpm -q --qf '%{EPOCH}:%{VERSION}' --whatprovides mozilla)
 %endif
