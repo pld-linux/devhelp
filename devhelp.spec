@@ -1,13 +1,13 @@
 #
 # Conditional build:
-%bcond_with	mozilla_firefox	# build with mozilla-firefox-devel
+%bcond_without	mozilla_firefox	# build with mozilla-firefox-devel
 #
 %define		minmozver	5:1.7
 Summary:	DevHelp is a developer's help program for GNOME
 Summary(pl):	Program pomocy dla programistów GNOME
 Name:		devhelp
 Version:	0.10
-Release:	2
+Release:	3
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.imendio.com/pub/imendio/devhelp/src/%{name}-%{version}.tar.gz
