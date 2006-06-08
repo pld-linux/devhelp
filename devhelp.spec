@@ -1,21 +1,20 @@
 #
 # Conditional build:
-%bcond_with	mozilla_firefox	# build with mozilla-firefox-devel
+%bcond_without	mozilla_firefox # build with mozilla-firefox-devel
 #
 %define		minmozver	5:1.7
 Summary:	DevHelp is a developer's help program for GNOME
 Summary(pl):	Program pomocy dla programistów GNOME
 Name:		devhelp
-Version:	0.10
-Release:	2
+Version:	0.11
+Release:	0.1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.imendio.com/pub/imendio/devhelp/src/%{name}-%{version}.tar.gz
-# Source0-md5:	79e71acb839ca504f37cccf2e520abe1
+Source0:	http://ftp.imendio.com/pub/imendio/devhelp/%{name}-%{version}.tar.gz
+# Source0-md5:	9c93f268e9cbdbb58931ccc3dba2fc9c
 Patch0:		%{name}-bookdir.patch
-Patch1:		%{name}-mozilla.patch
-Patch2:		%{name}-mozilla_includes.patch
-Patch3:		%{name}-desktop.patch
+Patch1:		%{name}-mozilla_includes.patch
+Patch2:		%{name}-desktop.patch
 URL:		http://www.imendio.com/projects/devhelp/
 BuildRequires:	GConf2-devel
 BuildRequires:	autoconf
@@ -91,11 +90,10 @@ Statyczna biblioteka Devhelp.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 
 %build
 %{__libtoolize}
-%{__aclocal}
+%{__aclocal} -I m4
 %{__autoconf}
 %{__autoheader}
 %{__automake}
