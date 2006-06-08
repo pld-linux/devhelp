@@ -1,15 +1,15 @@
-diff -urN aa/devhelp-0.9.3/src/Makefile.am devhelp-0.9.3/src/Makefile.am
---- aa/devhelp-0.9.3/src/Makefile.am	2004-10-21 18:53:40.000000000 +0200
-+++ devhelp-0.9.3/src/Makefile.am	2004-11-01 19:06:46.329546272 +0100
-@@ -15,9 +15,11 @@
- 	-I$(MOZILLA_INCLUDE_ROOT)/dom                     \
- 	-I$(MOZILLA_INCLUDE_ROOT)/find                    \
- 	-I$(MOZILLA_INCLUDE_ROOT)/locale		\
-+	-I$(MOZILLA_INCLUDE_ROOT)/necko		\
- 	-I$(MOZILLA_INCLUDE_ROOT)/webbrwsr		  \
- 	-I$(MOZILLA_INCLUDE_ROOT)/string		  \
- 	-I$(MOZILLA_INCLUDE_ROOT)/pref                    \
-+	-I$(MOZILLA_INCLUDE_ROOT)/windowwatcher		\
- 	-I$(MOZILLA_INCLUDE_ROOT)/gfx                     \
- 	-DALLOW_PRIVATE_API                               \
- 	-DMOZILLA_HOME=\""$(MOZILLA_HOME)\""              \
+diff -ur devhelp-0.11.orig/src/Makefile.am devhelp-0.11/src/Makefile.am
+--- devhelp-0.11.orig/src/Makefile.am	2005-12-17 18:28:17.000000000 +0100
++++ devhelp-0.11/src/Makefile.am	2006-01-18 10:40:12.422635500 +0100
+@@ -45,8 +45,11 @@
+ 	find			\
+ 	gfx			\
+ 	locale			\
++	necko			\
+ 	prefix			\
++	pref			\
+ 	webbrwsr		\
++	windowwatcher	\
+ 	string
+ 
+ libcppwrapper_la_CPPFLAGS = 				\
