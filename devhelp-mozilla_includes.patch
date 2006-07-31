@@ -1,15 +1,14 @@
-diff -ur devhelp-0.11.orig/src/Makefile.am devhelp-0.11/src/Makefile.am
---- devhelp-0.11.orig/src/Makefile.am	2005-12-17 18:28:17.000000000 +0100
-+++ devhelp-0.11/src/Makefile.am	2006-01-18 10:40:12.422635500 +0100
-@@ -45,8 +45,11 @@
- 	find			\
+diff -ur devhelp-0.12-orig/src/Makefile.am devhelp-0.12/src/Makefile.am
+--- devhelp-0.12-orig/src/Makefile.am	2006-03-11 09:50:37.000000000 +0100
++++ devhelp-0.12/src/Makefile.am	2006-07-31 09:23:51.895249750 +0200
+@@ -44,8 +44,10 @@
  	gfx			\
+ 	gtkembedmoz		\
  	locale			\
 +	necko			\
- 	prefix			\
-+	pref			\
+ 	pref			\
  	webbrwsr		\
 +	windowwatcher	\
- 	string
+ 	string			\
+ 	xpcom
  
- libcppwrapper_la_CPPFLAGS = 				\

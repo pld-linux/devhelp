@@ -1,10 +1,12 @@
-diff -urN devhelp-0.9.3.orig/devhelp.desktop.in devhelp-0.9.3/devhelp.desktop.in
---- devhelp-0.9.3.orig/devhelp.desktop.in	2004-11-17 11:46:51.301707224 +0100
-+++ devhelp-0.9.3/devhelp.desktop.in	2004-11-17 11:47:10.118846584 +0100
-@@ -6,5 +6,5 @@
+diff -ur devhelp-0.12-orig/devhelp.desktop.in devhelp-0.12/devhelp.desktop.in
+--- devhelp-0.12-orig/devhelp.desktop.in	2006-05-16 20:44:47.000000000 +0200
++++ devhelp-0.12/devhelp.desktop.in	2006-07-31 09:25:48.790555250 +0200
+@@ -6,7 +6,7 @@
  Terminal=false
  Type=Application
  Icon=devhelp.png
--Categories=GNOME;Application;Development;
+-Categories=GNOME;GTK;Application;Development;
 +Categories=GTK;GNOME;Development;
  StartupNotify=true
+ MimeType=application/x-devhelp;
+ X-GNOME-Bugzilla-Bugzilla=GNOME
