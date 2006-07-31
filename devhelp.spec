@@ -7,7 +7,7 @@ Summary:	DevHelp is a developer's help program for GNOME
 Summary(pl):	Program pomocy dla programistów GNOME
 Name:		devhelp
 Version:	0.12
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/0.12/%{name}-%{version}.tar.gz
@@ -85,6 +85,21 @@ Static version of Devhelp library.
 %description static -l pl
 Statyczna biblioteka Devhelp.
 
+%package -n gedit2-plugin-devhelp
+Summary:	Devhelp plugin for Gedit editor
+Summary(pl):    Wtyczka devhelpa dle edytora Gedit
+Group:      X11/Applications
+BuildRequires:	python
+Requires:	%{name}-libs = %{version}-%{release}
+Requires:	gedit2
+
+%description -n gedit2-plugin-devhelp
+This plugin enables gtk documentation browser using devhelp libraries.
+
+%description -n gedit2-plugin-devhelp -l pl
+Wtyczka umo¿liwiaj±ca przegl±danie dokumentacji gtk przy pomocy
+bibliotek devhelpa.
+
 %prep
 %setup -q
 %patch0 -p1
@@ -148,3 +163,8 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
+
+%files -n gedit2-plugin-devhelp
+%defattr(644,root,root,755)
+%{_libdir}/gedit-2/plugins/%{name}.gedit-plugin
+%{_libdir}/gedit-2/plugins/%{name}/*.py[oc]
