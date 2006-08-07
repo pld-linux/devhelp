@@ -147,7 +147,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/devhelp*
 %{_datadir}/%{name}
 %{_desktopdir}/*.desktop
-%{_iconsdir}/*
+%{_iconsdir}/hicolor/*/apps/*
 %{_sysconfdir}/gconf/schemas/*
 
 %files libs
