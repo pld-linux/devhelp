@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_without	mozilla_firefox # build with mozilla-firefox-devel
+%bcond_without	mozilla_firefox # build with mozilla instead of mozilla-firefox
 #
 %define		minmozver	5:1.7
 Summary:	DevHelp is a developer's help program for GNOME
@@ -30,6 +30,7 @@ BuildRequires:	mozilla-firefox-devel
 BuildRequires:	mozilla-devel >= %{minmozver}
 %endif
 BuildRequires:	pkgconfig
+BuildRequires:	python
 BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	zlib-devel
 Requires(post,preun):	GConf2
@@ -87,17 +88,17 @@ Statyczna biblioteka Devhelp.
 
 %package -n gedit2-plugin-devhelp
 Summary:	Devhelp plugin for Gedit editor
-Summary(pl):    Wtyczka devhelpa dle edytora Gedit
-Group:      X11/Applications
-BuildRequires:	python
+Summary(pl):	Wtyczka devhelpa dle edytora Gedit
+Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
 Requires:	gedit2
 
 %description -n gedit2-plugin-devhelp
-This plugin enables gtk documentation browser using devhelp libraries.
+This plugin enables GTK+ documentation browser using devhelp
+libraries.
 
 %description -n gedit2-plugin-devhelp -l pl
-Wtyczka umo¿liwiaj±ca przegl±danie dokumentacji gtk przy pomocy
+Wtyczka umo¿liwiaj±ca przegl±danie dokumentacji GTK+ przy pomocy
 bibliotek devhelpa.
 
 %prep
@@ -167,4 +168,5 @@ rm -rf $RPM_BUILD_ROOT
 %files -n gedit2-plugin-devhelp
 %defattr(644,root,root,755)
 %{_libdir}/gedit-2/plugins/%{name}.gedit-plugin
+%dir %{_libdir}/gedit-2/plugins/%{name}
 %{_libdir}/gedit-2/plugins/%{name}/*.py[oc]
