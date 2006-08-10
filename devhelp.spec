@@ -88,7 +88,7 @@ Statyczna biblioteka Devhelp.
 
 %package -n gedit2-plugin-devhelp
 Summary:	Devhelp plugin for Gedit editor
-Summary(pl):	Wtyczka devhelpa dle edytora Gedit
+Summary(pl):	Wtyczka devhelpa dla edytora Gedit
 Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
 Requires:	gedit2
