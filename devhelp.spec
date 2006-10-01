@@ -2,7 +2,7 @@ Summary:	API documentation browser for GNOME
 Summary(pl):	Przegl±darka dokumentacji API dla GNOME
 Name:		devhelp
 Version:	0.12
-Release:	4
+Release:	5
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/0.12/%{name}-%{version}.tar.gz
@@ -20,13 +20,13 @@ BuildRequires:	gtk+2-devel >= 2:2.10.1
 BuildRequires:	libglade2-devel >= 1:2.6.0
 BuildRequires:	libtool
 BuildRequires:	libwnck-devel >= 2.15.91
-BuildRequires:	mozilla-firefox-devel >= 1.5.0.6
+BuildRequires:	mozilla-firefox-devel >= 1.5.0.7
 BuildRequires:	pkgconfig
 BuildRequires:	python
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	zlib-devel
 Requires(post,preun):	GConf2 >= 2.14.0
-Requires(post,post):	gtk+2 >= 2.10.1
+Requires(post,postun):	gtk+2 >= 2:2.10.1
 Requires:	%{name}-libs = %{version}-%{release}
 %requires_eq	mozilla-firefox
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
