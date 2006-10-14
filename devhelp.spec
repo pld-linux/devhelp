@@ -27,6 +27,7 @@ BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	zlib-devel
 Requires(post,preun):	GConf2 >= 2.14.0
 Requires(post,postun):	gtk+2 >= 2:2.10.1
+Requires(post,postun):	hicolor-icon-theme
 Requires:	%{name}-libs = %{version}-%{release}
 %requires_eq	mozilla-firefox
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
