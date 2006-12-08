@@ -7,7 +7,7 @@ Summary:	DevHelp is a developer's help program for GNOME
 Summary(pl):	Program pomocy dla programistów GNOME
 Name:		devhelp
 Version:	0.10
-Release:	7
+Release:	8
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.imendio.com/pub/imendio/devhelp/src/%{name}-%{version}.tar.gz
@@ -36,7 +36,7 @@ BuildRequires:	zlib-devel
 Requires(post,preun):	GConf2
 Requires:	%{name}-libs = %{version}-%{release}
 %if %{with mozilla_firefox}
-%requires_eq	mozilla-firefox
+%requires_eq	mozilla-firefox-libs
 %else
 Requires:	mozilla = %(rpm -q --qf '%{EPOCH}:%{VERSION}' --whatprovides mozilla)
 %endif
