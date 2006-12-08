@@ -29,7 +29,7 @@ Requires(post,preun):	GConf2 >= 2.14.0
 Requires(post,postun):	gtk+2 >= 2:2.10.1
 Requires(post,postun):	hicolor-icon-theme
 Requires:	%{name}-libs = %{version}-%{release}
-%requires_eq	mozilla-firefox
+%requires_eq	mozilla-firefox-libs
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # can be provided by mozilla or mozilla-embedded
