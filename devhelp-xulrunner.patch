@@ -1,0 +1,39 @@
+diff -ur devhelp-0.10.orig/configure.in devhelp-0.10/configure.in
+--- devhelp-0.10.orig/configure.in	2007-01-01 19:45:41.000000000 +0100
++++ devhelp-0.10/configure.in	2007-01-01 20:12:20.000000000 +0100
+@@ -44,13 +44,15 @@
+ 
+ MOZILLA=
+ AC_ARG_WITH([mozilla],
+-	AC_HELP_STRING([--with-mozilla@<:@=mozilla|firefox|thunderbird@:>@],
+-		       [Whether to use mozilla, firefox or thunderbird gtkmozembed (default: mozilla)]),
++	AC_HELP_STRING([--with-mozilla@<:@=xulrunner|mozilla|firefox|thunderbird@:>@],
++		       [Whether to use xulrunner, mozilla, firefox or thunderbird gtkmozembed (default: xulrunner)]),
+ 	[MOZILLA="$withval"])
+ 
+ dnl try to autodetect: if mozilla exists, use it, else try firefox, then thunderbird
+ if test "x$MOZILLA" = "x"; then
+-  if pkg-config --exists mozilla-gtkmozembed; then
++  if pkg-config --exists xulrunner-gtkmozembed; then
++    MOZILLA=xulrunner
++  elif pkg-config --exists mozilla-gtkmozembed; then
+     MOZILLA=mozilla
+   elif pkg-config --exists firefox-gtkmozembed; then
+     MOZILLA=firefox
+@@ -59,7 +61,7 @@
+   else
+     AC_MSG_ERROR([no mozilla installation found])
+   fi
+-elif test "x$with_mozilla" != "xmozilla" -a "x$with_mozilla" != "xfirefox" -a "x$with_mozilla" != "xthunderbird"; then
++elif test "x$with_mozilla" != "xxulrunner" -a "x$with_mozilla" != "xmozilla" -a "x$with_mozilla" != "xfirefox" -a "x$with_mozilla" != "xthunderbird"; then
+   AC_MSG_ERROR([unknown mozilla name ($MOZILLA)])
+ fi
+ 
+@@ -68,6 +70,7 @@
+ AC_MSG_RESULT([$MOZILLA])
+ 
+ case "$MOZILLA" in
++xulrunner) min_version=1.8 flavour=toolkit ;;
+ mozilla) min_version=1.7 flavour=mozilla ;;
+ firefox) min_version=0.10 flavour=toolkit ;;
+ thunderbird) min_version=0.8 flavour=toolkit ;;
