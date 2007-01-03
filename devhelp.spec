@@ -38,7 +38,7 @@ Requires:	%{name}-libs = %{version}-%{release}
 %if %{with mozilla_firefox}
 %requires_eq	mozilla-firefox-libs
 %else
-Requires:	xulrunner-libs
+%requires_eq	xulrunner-libs
 %endif
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
