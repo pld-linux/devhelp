@@ -101,7 +101,12 @@ Statyczna biblioteka Devhelp.
 %{__autoheader}
 %{__automake}
 %configure \
-	--disable-install-schemas
+	--disable-install-schemas \
+	%if %{with mozilla_firefox}
+	--with-mozilla=firefox
+	%else
+	--with-mozilla=xulrunner
+	%endif
 %{__make}
 
 %install
