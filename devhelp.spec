@@ -20,7 +20,7 @@ BuildRequires:	gtk+2-devel >= 2:2.10.1
 BuildRequires:	libglade2-devel >= 1:2.6.0
 BuildRequires:	libtool
 BuildRequires:	libwnck-devel >= 2.15.91
-BuildRequires:	mozilla-firefox-devel >= 1.5.0.7
+BuildRequires:	xulrunner-devel >= 1.8.0.4
 BuildRequires:	pkgconfig
 BuildRequires:	python
 BuildRequires:	rpmbuild(macros) >= 1.311
@@ -29,7 +29,7 @@ Requires(post,preun):	GConf2 >= 2.14.0
 Requires(post,postun):	gtk+2 >= 2:2.10.1
 Requires(post,postun):	hicolor-icon-theme
 Requires:	%{name}-libs = %{version}-%{release}
-%requires_eq	mozilla-firefox-libs
+%requires_eq	xulrunner-libs
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # can be provided by mozilla or mozilla-embedded
