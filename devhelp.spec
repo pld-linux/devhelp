@@ -1,6 +1,4 @@
 #
-# Conditional build:
-%bcond_with	mozilla_firefox	# build with mozilla-firefox-devel
 #
 Summary:	DevHelp is a developer's help program for GNOME
 Summary(pl):	Program pomocy dla programistów GNOME
@@ -25,21 +23,13 @@ BuildRequires:	gnome-vfs2-devel >= 2.10.0-2
 BuildRequires:	gtk+2-devel >= 2:2.6.4
 BuildRequires:	libglade2-devel >= 1:2.5.1
 BuildRequires:	libtool
-%if %{with mozilla_firefox}
-BuildRequires:	mozilla-firefox-devel
-%else
 BuildRequires:	xulrunner-devel >= 1.8.0.4
-%endif
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	zlib-devel
 Requires(post,preun):	GConf2
 Requires:	%{name}-libs = %{version}-%{release}
-%if %{with mozilla_firefox}
-%requires_eq	mozilla-firefox-libs
-%else
 %requires_eq	xulrunner-libs
-%endif
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # can be provided by mozilla or mozilla-embedded
@@ -102,11 +92,7 @@ Statyczna biblioteka Devhelp.
 %{__automake}
 %configure \
 	--disable-install-schemas \
-	%if %{with mozilla_firefox}
-	--with-mozilla=firefox
-	%else
 	--with-mozilla=xulrunner
-	%endif
 %{__make}
 
 %install
