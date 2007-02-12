@@ -1,5 +1,5 @@
 Summary:	API documentation browser for GNOME
-Summary(pl.UTF-8):   Przeglądarka dokumentacji API dla GNOME
+Summary(pl.UTF-8):	Przeglądarka dokumentacji API dla GNOME
 Name:		devhelp
 Version:	0.12
 Release:	5
@@ -43,7 +43,7 @@ Przeglądarka dokumentacji API dla GNOME.
 
 %package libs
 Summary:	Library to embed Devhelp in other applications
-Summary(pl.UTF-8):   Biblioteka do osadzania Devhelp w innych aplikacjach
+Summary(pl.UTF-8):	Biblioteka do osadzania Devhelp w innych aplikacjach
 Group:		Libraries
 
 %description libs
@@ -54,7 +54,7 @@ Biblioteka Devhelp do osadzania w innych aplikacjach.
 
 %package devel
 Summary:	Headers for Devhelp library
-Summary(pl.UTF-8):   Pliki nagłówkowe biblioteki Devhelp
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki Devhelp
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 
@@ -66,7 +66,7 @@ Pliki nagłówkowe biblioteki Devhelp.
 
 %package static
 Summary:	Static Devhelp library
-Summary(pl.UTF-8):   Statyczna biblioteka Devhelp
+Summary(pl.UTF-8):	Statyczna biblioteka Devhelp
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
@@ -78,7 +78,7 @@ Statyczna biblioteka Devhelp.
 
 %package -n gedit2-plugin-devhelp
 Summary:	Devhelp plugin for Gedit editor
-Summary(pl.UTF-8):   Wtyczka devhelpa dla edytora Gedit
+Summary(pl.UTF-8):	Wtyczka devhelpa dla edytora Gedit
 Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
 Requires:	gedit2
