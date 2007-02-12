@@ -1,5 +1,5 @@
 Summary:	API documentation browser for GNOME
-Summary(pl):	Przegl±darka dokumentacji API dla GNOME
+Summary(pl.UTF-8):   PrzeglÄ…darka dokumentacji API dla GNOME
 Name:		devhelp
 Version:	0.12
 Release:	5
@@ -38,47 +38,47 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 API documentation browser for GNOME.
 
-%description -l pl
-Przegl±darka dokumentacji API dla GNOME.
+%description -l pl.UTF-8
+PrzeglÄ…darka dokumentacji API dla GNOME.
 
 %package libs
 Summary:	Library to embed Devhelp in other applications
-Summary(pl):	Biblioteka do osadzania Devhelp w innych aplikacjach
+Summary(pl.UTF-8):   Biblioteka do osadzania Devhelp w innych aplikacjach
 Group:		Libraries
 
 %description libs
 Library of Devhelp for embedding into other applications.
 
-%description libs -l pl
+%description libs -l pl.UTF-8
 Biblioteka Devhelp do osadzania w innych aplikacjach.
 
 %package devel
 Summary:	Headers for Devhelp library
-Summary(pl):	Pliki nag³ówkowe biblioteki Devhelp
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe biblioteki Devhelp
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 
 %description devel
 Headers for Devhelp library.
 
-%description devel -l pl
-Pliki nag³ówkowe biblioteki Devhelp.
+%description devel -l pl.UTF-8
+Pliki nagÅ‚Ã³wkowe biblioteki Devhelp.
 
 %package static
 Summary:	Static Devhelp library
-Summary(pl):	Statyczna biblioteka Devhelp
+Summary(pl.UTF-8):   Statyczna biblioteka Devhelp
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static version of Devhelp library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna biblioteka Devhelp.
 
 %package -n gedit2-plugin-devhelp
 Summary:	Devhelp plugin for Gedit editor
-Summary(pl):	Wtyczka devhelpa dla edytora Gedit
+Summary(pl.UTF-8):   Wtyczka devhelpa dla edytora Gedit
 Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
 Requires:	gedit2
@@ -86,8 +86,8 @@ Requires:	gedit2
 %description -n gedit2-plugin-devhelp
 Allows to browse API documentation in Gedit.
 
-%description -n gedit2-plugin-devhelp -l pl
-Umo¿liwia przegl±danie dokumentacji API w Gedit.
+%description -n gedit2-plugin-devhelp -l pl.UTF-8
+UmoÅ¼liwia przeglÄ…danie dokumentacji API w Gedit.
 
 %prep
 %setup -q
