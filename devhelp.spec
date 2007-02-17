@@ -1,35 +1,35 @@
 Summary:	API documentation browser for GNOME
 Summary(pl.UTF-8):	Przeglądarka dokumentacji API dla GNOME
 Name:		devhelp
-Version:	0.12
-Release:	5
+Version:	0.13
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/0.12/%{name}-%{version}.tar.gz
-# Source0-md5:	e211ec1a75dba00d8e71a66e2ab2aec3
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/0.13/%{name}-%{version}.tar.bz2
+# Source0-md5:	230c05c1e13ba6ae44c94e034ea77348
 Patch0:		%{name}-bookdir.patch
 Patch1:		%{name}-mozilla_includes.patch
 Patch2:		%{name}-desktop.patch
 URL:		http://www.imendio.com/projects/devhelp/
-BuildRequires:	GConf2-devel >= 2.14.0
+BuildRequires:	GConf2-devel >= 2.16.0
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gnome-common >= 2.12.0
-BuildRequires:	gnome-vfs2-devel >= 2.15.91
-BuildRequires:	gtk+2-devel >= 2:2.10.1
+BuildRequires:	gnome-vfs2-devel >= 2.16.3
+BuildRequires:	gtk+2-devel >= 2:2.10.9
 BuildRequires:	libglade2-devel >= 1:2.6.0
 BuildRequires:	libtool
-BuildRequires:	libwnck-devel >= 2.15.91
+BuildRequires:	libwnck-devel >= 2.16.3
 BuildRequires:	xulrunner-devel >= 1.8.0.4
 BuildRequires:	pkgconfig
 BuildRequires:	python
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	zlib-devel
-Requires(post,preun):	GConf2 >= 2.14.0
-Requires(post,postun):	gtk+2 >= 2:2.10.1
+Requires(post,preun):	GConf2 >= 2.16.0
+Requires(post,postun):	gtk+2
 Requires(post,postun):	hicolor-icon-theme
 Requires:	%{name}-libs = %{version}-%{release}
-%requires_eq	xulrunner-libs
+%requires_eq	xulrunner
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # can be provided by mozilla or mozilla-embedded
