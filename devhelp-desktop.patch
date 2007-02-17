@@ -1,7 +1,7 @@
-diff -ur devhelp-0.12-orig/devhelp.desktop.in devhelp-0.12/devhelp.desktop.in
---- devhelp-0.12-orig/devhelp.desktop.in	2006-05-16 20:44:47.000000000 +0200
-+++ devhelp-0.12/devhelp.desktop.in	2006-07-31 09:25:48.790555250 +0200
-@@ -6,7 +6,7 @@
+diff -urN devhelp-0.13/devhelp.desktop.in.in devhelp-0.13.new/devhelp.desktop.in.in
+--- devhelp-0.13/devhelp.desktop.in.in	2007-01-10 16:40:41.000000000 +0100
++++ devhelp-0.13.new/devhelp.desktop.in.in	2007-02-17 14:26:33.000000000 +0100
+@@ -7,7 +7,7 @@
  Terminal=false
  Type=Application
  Icon=devhelp.png
