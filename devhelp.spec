@@ -26,6 +26,7 @@ BuildRequires:	python
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	zlib-devel
 Requires(post,preun):	GConf2 >= 2.16.0
+Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk+2
 Requires(post,postun):	hicolor-icon-theme
 Requires:	%{name}-libs = %{version}-%{release}
@@ -123,12 +124,14 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 %gconf_schema_install devhelp.schemas
+%update_desktop_database_post
 %update_icon_cache hicolor
 
 %preun
 %gconf_schema_uninstall devhelp.schemas
 
 %postun
+%update_desktop_database_postun
 %update_icon_cache hicolor
 
 %post	libs -p /sbin/ldconfig
