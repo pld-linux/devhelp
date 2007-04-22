@@ -2,7 +2,7 @@ Summary:	API documentation browser for GNOME
 Summary(pl.UTF-8):	Przeglądarka dokumentacji API dla GNOME
 Name:		devhelp
 Version:	0.13
-Release:	3
+Release:	4
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/0.13/%{name}-%{version}.tar.bz2
@@ -35,6 +35,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # can be provided by mozilla or mozilla-embedded
 %define		_noautoreqdep	libgtkembedmoz.so libxpcom.so
+# we have strict deps for it
+%define		_noautoreq	libxpcom.so
 
 %description
 API documentation browser for GNOME.
