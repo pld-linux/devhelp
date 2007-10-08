@@ -1,16 +1,16 @@
 Summary:	API documentation browser for GNOME
 Summary(pl.UTF-8):	Przeglądarka dokumentacji API dla GNOME
 Name:		devhelp
-Version:	0.16
-Release:	3
+Version:	0.16.1
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/0.16/%{name}-%{version}.tar.bz2
-# Source0-md5:	61d2300ab657ab63c65a49311916a6d2
+# Source0-md5:	e464a7305dddeec224ae08e30bf38e58
 Patch0:		%{name}-bookdir.patch
 Patch1:		%{name}-mozilla_includes.patch
 URL:		http://www.imendio.com/projects/devhelp/
-BuildRequires:	GConf2-devel >= 2.18.0
+BuildRequires:	GConf2-devel >= 2.20.0
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	gnome-common >= 2.18.0
@@ -24,7 +24,7 @@ BuildRequires:	pkgconfig
 BuildRequires:	python
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	zlib-devel
-Requires(post,preun):	GConf2 >= 2.18.0
+Requires(post,preun):	GConf2 >= 2.20.0
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk+2
 Requires(post,postun):	hicolor-icon-theme
