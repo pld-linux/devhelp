@@ -2,7 +2,7 @@ Summary:	API documentation browser for GNOME
 Summary(pl.UTF-8):	Przeglądarka dokumentacji API dla GNOME
 Name:		devhelp
 Version:	0.16.1
-Release:	3
+Release:	4
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/0.16/%{name}-%{version}.tar.bz2
@@ -98,6 +98,9 @@ Umożliwia przeglądanie dokumentacji API w Gedit.
 %patch0 -p1
 %patch1 -p1
 
+sed -i -e s#sr\@Latn#sr\@latin# configure.in
+mv po/sr\@{Latn,latin}.po
+
 %build
 %{__libtoolize}
 %{__aclocal} -I m4
@@ -120,8 +123,6 @@ install -d $RPM_BUILD_ROOT%{_sysconfdir}/gconf \
 rm -rf $RPM_BUILD_ROOT%{_datadir}/mime-info
 rm -f $RPM_BUILD_ROOT%{_libdir}/gedit-2/plugins/%{name}/*.py
 
-[ -d $RPM_BUILD_ROOT%{_datadir}/locale/sr@latin ] || \
-	mv -f $RPM_BUILD_ROOT%{_datadir}/locale/sr@{Latn,latin}
 %find_lang %{name}
 
 %clean
