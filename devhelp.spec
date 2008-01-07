@@ -1,33 +1,35 @@
 Summary:	API documentation browser for GNOME
 Summary(pl.UTF-8):	Przeglądarka dokumentacji API dla GNOME
 Name:		devhelp
-Version:	0.16.1
-Release:	6
+Version:	0.17
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/0.16/%{name}-%{version}.tar.bz2
-# Source0-md5:	e464a7305dddeec224ae08e30bf38e58
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/0.17/%{name}-%{version}.tar.bz2
+# Source0-md5:	5a4d09bebc29ae4a1ab2dcfd7eb3e233
 Patch0:		%{name}-bookdir.patch
 Patch1:		%{name}-mozilla_includes.patch
 URL:		http://www.imendio.com/projects/devhelp/
 BuildRequires:	GConf2-devel >= 2.20.0
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.9
+BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.18.0
-BuildRequires:	gnome-vfs2-devel >= 2.20.0
 BuildRequires:	gtk+2-devel >= 2:2.12.0
-BuildRequires:	libglade2-devel >= 1:2.6.0
+BuildRequires:	intltool >= 0.35.5
+BuildRequires:	libglade2-devel >= 1:2.6.2
 BuildRequires:	libtool
 BuildRequires:	libwnck-devel >= 2.20.0
-BuildRequires:	xulrunner-devel >= 1.8.0.4
 BuildRequires:	pkgconfig
 BuildRequires:	python
 BuildRequires:	rpmbuild(macros) >= 1.311
+BuildRequires:	sed >= 4.0
+BuildRequires:	xulrunner-devel >= 1.8.0.4
 BuildRequires:	zlib-devel
-Requires(post,preun):	GConf2 >= 2.20.0
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk+2
 Requires(post,postun):	hicolor-icon-theme
+Requires(post,preun):	GConf2 >= 2.20.0
 Requires:	%{name}-libs = %{version}-%{release}
 %requires_eq_to	xulrunner xulrunner-devel
 # sr@Latn vs. sr@latin
@@ -61,6 +63,8 @@ Summary:	Headers for Devhelp library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki Devhelp
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
+Requires:	gtk+2-devel >= 2:2.12.0
+Requires:	libwnck-devel >= 2.20.0
 
 %description devel
 Headers for Devhelp library.
@@ -98,8 +102,8 @@ Umożliwia przeglądanie dokumentacji API w Gedit.
 %patch0 -p1
 %patch1 -p1
 
-sed -i -e s#sr\@Latn#sr\@latin# configure.in
-mv po/sr\@{Latn,latin}.po
+sed -i -e s#sr@Latn#sr@latin# po/LINGUAS
+mv po/sr@{Latn,latin}.po
 
 %build
 %{__libtoolize}
@@ -154,18 +158,18 @@ rm -rf $RPM_BUILD_ROOT
 
 %files libs
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
+%attr(755,root,root) %{_libdir}/libdevhelp-1.so.*.*.*
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
-%{_pkgconfigdir}/*.pc
-%{_includedir}/*
+%attr(755,root,root) %{_libdir}/libdevhelp-1.so
+%{_libdir}/libdevhelp-1.la
+%{_pkgconfigdir}/libdevhelp-1.0.pc
+%{_includedir}/devhelp-1.0
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libdevhelp-1.a
 
 %files -n gedit2-plugin-devhelp
 %defattr(644,root,root,755)
