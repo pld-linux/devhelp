@@ -14,12 +14,12 @@ BuildRequires:	GConf2-devel >= 2.20.0
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	gettext-devel
-BuildRequires:	gnome-common >= 2.18.0
-BuildRequires:	gtk+2-devel >= 2:2.12.0
-BuildRequires:	intltool >= 0.35.5
+BuildRequires:	gnome-common >= 2.20.0
+BuildRequires:	gtk+2-devel >= 2:2.12.5
+BuildRequires:	intltool >= 0.37.0
 BuildRequires:	libglade2-devel >= 1:2.6.2
 BuildRequires:	libtool
-BuildRequires:	libwnck-devel >= 2.20.0
+BuildRequires:	libwnck-devel >= 2.20.3
 BuildRequires:	pkgconfig
 BuildRequires:	python
 BuildRequires:	rpmbuild(macros) >= 1.311
@@ -50,7 +50,7 @@ Przeglądarka dokumentacji API dla GNOME.
 %package libs
 Summary:	Library to embed Devhelp in other applications
 Summary(pl.UTF-8):	Biblioteka do osadzania Devhelp w innych aplikacjach
-Group:		Libraries
+Group:		X11/Libraries
 
 %description libs
 Library of Devhelp for embedding into other applications.
@@ -61,9 +61,9 @@ Biblioteka Devhelp do osadzania w innych aplikacjach.
 %package devel
 Summary:	Headers for Devhelp library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki Devhelp
-Group:		Development/Libraries
+Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	gtk+2-devel >= 2:2.12.0
+Requires:	gtk+2-devel >= 2:2.12.5
 Requires:	libwnck-devel >= 2.20.0
 
 %description devel
@@ -75,7 +75,7 @@ Pliki nagłówkowe biblioteki Devhelp.
 %package static
 Summary:	Static Devhelp library
 Summary(pl.UTF-8):	Statyczna biblioteka Devhelp
-Group:		Development/Libraries
+Group:		X11/Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
@@ -102,7 +102,7 @@ Umożliwia przeglądanie dokumentacji API w Gedit.
 %patch0 -p1
 %patch1 -p1
 
-sed -i -e s#sr@Latn#sr@latin# po/LINGUAS
+sed -i -e 's#sr@Latn#sr@latin#' po/LINGUAS
 mv po/sr@{Latn,latin}.po
 
 %build
@@ -150,15 +150,17 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README TODO
-%attr(755,root,root) %{_bindir}/devhelp*
+%attr(755,root,root) %{_bindir}/devhelp
 %{_datadir}/%{name}
-%{_desktopdir}/*.desktop
-%{_iconsdir}/hicolor/*/apps/*
+%{_desktopdir}/devhelp.desktop
+%{_iconsdir}/hicolor/*/apps/*.png
+%{_iconsdir}/hicolor/scalable/apps/*.svg
 %{_sysconfdir}/gconf/schemas/devhelp.schemas
 
 %files libs
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libdevhelp-1.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libdevhelp-1.so.0
 
 %files devel
 %defattr(644,root,root,755)
