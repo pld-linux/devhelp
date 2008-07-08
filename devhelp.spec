@@ -25,7 +25,7 @@ BuildRequires:	pkgconfig
 BuildRequires:	python
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	sed >= 4.0
-BuildRequires:	xulrunner-devel >= 1.8.0.4
+BuildRequires:	xulrunner-devel >= 1.9-5
 BuildRequires:	zlib-devel
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk+2
