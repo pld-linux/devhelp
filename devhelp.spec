@@ -2,13 +2,14 @@ Summary:	API documentation browser for GNOME
 Summary(pl.UTF-8):	Przeglądarka dokumentacji API dla GNOME
 Name:		devhelp
 Version:	0.19.1
-Release:	2
+Release:	3
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/0.19/%{name}-%{version}.tar.bz2
 # Source0-md5:	6c12a272a94ac9cfc1dc6234590b46d8
 Patch0:		%{name}-bookdir.patch
 Patch1:		%{name}-mozilla_includes.patch
+Patch2:		%{name}-libxul.patch
 URL:		http://www.imendio.com/projects/devhelp/
 BuildRequires:	GConf2-devel >= 2.20.0
 BuildRequires:	autoconf
@@ -101,6 +102,7 @@ Umożliwia przeglądanie dokumentacji API w Gedit.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 sed -i -e 's#sr@Latn#sr@latin#' po/LINGUAS
 mv po/sr@{Latn,latin}.po
