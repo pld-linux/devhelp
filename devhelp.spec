@@ -1,12 +1,12 @@
 Summary:	API documentation browser for GNOME
 Summary(pl.UTF-8):	Przeglądarka dokumentacji API dla GNOME
 Name:		devhelp
-Version:	0.19.1
-Release:	5
+Version:	0.21
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/0.19/%{name}-%{version}.tar.bz2
-# Source0-md5:	6c12a272a94ac9cfc1dc6234590b46d8
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/0.21/%{name}-%{version}.tar.bz2
+# Source0-md5:	24ad71080dde0778cb42c30575b5aca6
 Patch0:		%{name}-bookdir.patch
 Patch1:		%{name}-mozilla_includes.patch
 Patch2:		%{name}-libxul.patch
@@ -24,7 +24,6 @@ BuildRequires:	libwnck-devel >= 2.20.3
 BuildRequires:	pkgconfig
 BuildRequires:	python
 BuildRequires:	rpmbuild(macros) >= 1.311
-BuildRequires:	sed >= 4.0
 BuildRequires:	xulrunner-devel >= 1.9-5
 BuildRequires:	zlib-devel
 Requires(post,postun):	desktop-file-utils
@@ -104,9 +103,6 @@ Umożliwia przeglądanie dokumentacji API w Gedit.
 %patch1 -p1
 %patch2 -p1
 
-sed -i -e 's#sr@Latn#sr@latin#' po/LINGUAS
-mv po/sr@{Latn,latin}.po
-
 %build
 %{__libtoolize}
 %{__aclocal} -I m4
@@ -115,6 +111,7 @@ mv po/sr@{Latn,latin}.po
 %{__automake}
 %configure \
 	--enable-static \
+	--with-gecko=libxul-embedding \
 	--disable-install-schemas
 %{__make}
 
