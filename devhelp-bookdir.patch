@@ -1,14 +1,14 @@
-diff -urN devhelp-0.13/src/dh-base.c devhelp-0.13.new/src/dh-base.c
---- devhelp-0.13/src/dh-base.c	2007-02-07 14:41:04.000000000 +0100
-+++ devhelp-0.13.new/src/dh-base.c	2007-02-07 16:05:31.000000000 +0100
-@@ -229,6 +229,10 @@
- 	dir = g_build_filename (data_dir, "gtk-doc", "html", NULL);
- 	base_add_books (base, dir);
- 	g_free (dir);
-+	
-+	dir = g_build_filename (data_dir, "doc", "gtk-doc", "html", NULL);
-+	base_add_books (base, dir);
-+	g_free (dir);
+diff -urN devhelp-0.22/src/dh-base.c devhelp-0.22.new/src/dh-base.c
+--- devhelp-0.22/src/dh-base.c	2008-10-11 00:00:18.000000000 +0200
++++ devhelp-0.22.new/src/dh-base.c	2008-12-03 20:27:27.000000000 +0100
+@@ -210,6 +210,10 @@
+         dir = g_build_filename (data_dir, "gtk-doc", "html", NULL);
+         base_add_books (base, dir);
+         g_free (dir);
++        
++        dir = g_build_filename (data_dir, "doc", "gtk-doc", "html", NULL);
++        base_add_books (base, dir);
++        g_free (dir);
  
- 	dir = g_build_filename (data_dir, "devhelp", "books", NULL);
- 	base_add_books (base, dir);
+         dir = g_build_filename (data_dir, "devhelp", "books", NULL);
+         base_add_books (base, dir);
