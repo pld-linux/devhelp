@@ -1,45 +1,35 @@
 Summary:	API documentation browser for GNOME
 Summary(pl.UTF-8):	Przeglądarka dokumentacji API dla GNOME
 Name:		devhelp
-Version:	0.21
-Release:	3
+Version:	0.22
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/0.21/%{name}-%{version}.tar.bz2
-# Source0-md5:	24ad71080dde0778cb42c30575b5aca6
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/0.22/%{name}-%{version}.tar.bz2
+# Source0-md5:	7cdd0688dba0184b6dd2688532af24cb
 Patch0:		%{name}-bookdir.patch
-Patch1:		%{name}-mozilla_includes.patch
-Patch2:		%{name}-libxul.patch
 URL:		http://www.imendio.com/projects/devhelp/
-BuildRequires:	GConf2-devel >= 2.20.0
-BuildRequires:	autoconf
+BuildRequires:	GConf2-devel >= 2.24.0
+BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	gettext-devel
-BuildRequires:	gnome-common >= 2.20.0
-BuildRequires:	gtk+2-devel >= 2:2.12.5
-BuildRequires:	intltool >= 0.37.0
-BuildRequires:	libglade2-devel >= 1:2.6.2
+BuildRequires:	gnome-common >= 2.24.0
+BuildRequires:	gtk+2-devel >= 2:2.14.0
+BuildRequires:	gtk-webkit-devel
+BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libtool
-BuildRequires:	libwnck-devel >= 2.20.3
+BuildRequires:	libwnck-devel >= 2.24.0
 BuildRequires:	pkgconfig
 BuildRequires:	python
 BuildRequires:	rpmbuild(macros) >= 1.311
-BuildRequires:	xulrunner-devel >= 1.9-5
 BuildRequires:	zlib-devel
-Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk+2
 Requires(post,postun):	hicolor-icon-theme
 Requires(post,preun):	GConf2 >= 2.20.0
 Requires:	%{name}-libs = %{version}-%{release}
-%requires_eq_to	xulrunner xulrunner-devel
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-# can be provided by mozilla or mozilla-embedded
-%define		_noautoreqdep	libgtkembedmoz.so libxpcom.so
-# we have strict deps for it
-%define		_noautoreq	libxpcom.so
 
 %description
 API documentation browser for GNOME.
@@ -63,8 +53,8 @@ Summary:	Headers for Devhelp library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki Devhelp
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	gtk+2-devel >= 2:2.12.5
-Requires:	libwnck-devel >= 2.20.0
+Requires:	gtk+2-devel >= 2:2.14.0
+Requires:	libwnck-devel >= 2.24.0
 
 %description devel
 Headers for Devhelp library.
@@ -100,18 +90,16 @@ Umożliwia przeglądanie dokumentacji API w Gedit.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
 
 %build
+%{__intltoolize}
 %{__libtoolize}
-%{__aclocal} -I m4
+%{__aclocal}
 %{__autoconf}
 %{__autoheader}
 %{__automake}
 %configure \
 	--enable-static \
-	--with-gecko=libxul-embedding \
 	--disable-install-schemas
 %{__make}
 
@@ -123,7 +111,6 @@ install -d $RPM_BUILD_ROOT%{_sysconfdir}/gconf \
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-rm -rf $RPM_BUILD_ROOT%{_datadir}/mime-info
 rm -f $RPM_BUILD_ROOT%{_libdir}/gedit-2/plugins/%{name}/*.py
 
 %find_lang %{name}
@@ -133,14 +120,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 %gconf_schema_install devhelp.schemas
-%update_desktop_database_post
 %update_icon_cache hicolor
 
 %preun
 %gconf_schema_uninstall devhelp.schemas
 
 %postun
-%update_desktop_database_postun
 %update_icon_cache hicolor
 
 %post	libs -p /sbin/ldconfig
