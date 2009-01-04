@@ -21,6 +21,7 @@ BuildRequires:	libtool
 BuildRequires:	libwnck-devel >= 2.24.0
 BuildRequires:	pkgconfig
 BuildRequires:	python
+BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	zlib-devel
 Requires(post,postun):	gtk+2
