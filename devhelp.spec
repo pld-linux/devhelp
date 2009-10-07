@@ -1,12 +1,12 @@
 Summary:	API documentation browser for GNOME
 Summary(pl.UTF-8):	Przeglądarka dokumentacji API dla GNOME
 Name:		devhelp
-Version:	0.23
-Release:	4
+Version:	2.28.0.1
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/0.23/%{name}-%{version}.tar.bz2
-# Source0-md5:	704c0c90616aeb1c52ca3af1df93fde6
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/2.28/%{name}-%{version}.tar.bz2
+# Source0-md5:	b95064611f151ecd0520d2b733be78f0
 Patch0:		%{name}-bookdir.patch
 URL:		http://www.imendio.com/projects/devhelp/
 BuildRequires:	GConf2-devel >= 2.24.0
@@ -15,7 +15,7 @@ BuildRequires:	automake >= 1:1.9
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.24.0
 BuildRequires:	gtk+2-devel >= 2:2.14.0
-BuildRequires:	gtk-webkit-devel
+BuildRequires:	gtk-webkit-devel >= 1.1.13
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libtool
 BuildRequires:	libwnck-devel >= 2.24.0
@@ -145,7 +145,7 @@ rm -rf $RPM_BUILD_ROOT
 %files libs
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libdevhelp-1.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libdevhelp-1.so.0
+%attr(755,root,root) %ghost %{_libdir}/libdevhelp-1.so.1
 
 %files devel
 %defattr(644,root,root,755)
