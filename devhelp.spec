@@ -2,7 +2,7 @@ Summary:	API documentation browser for GNOME
 Summary(pl.UTF-8):	Przeglądarka dokumentacji API dla GNOME
 Name:		devhelp
 Version:	2.28.1
-Release:	2
+Release:	3
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/2.28/%{name}-%{version}.tar.bz2
@@ -18,6 +18,7 @@ BuildRequires:	gtk+2-devel >= 2:2.14.0
 BuildRequires:	gtk-webkit-devel >= 1.1.13
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libtool
+BuildRequires:	libunique-devel >= 1.0
 BuildRequires:	libwnck-devel >= 2.24.0
 BuildRequires:	pkgconfig
 BuildRequires:	python
