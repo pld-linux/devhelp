@@ -1,12 +1,12 @@
 Summary:	API documentation browser for GNOME
 Summary(pl.UTF-8):	Przeglądarka dokumentacji API dla GNOME
 Name:		devhelp
-Version:	2.28.1
-Release:	4
+Version:	2.30.0
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/2.28/%{name}-%{version}.tar.bz2
-# Source0-md5:	b9ec14ddf74c4b9924da77b62c345cf8
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/2.30/%{name}-%{version}.tar.bz2
+# Source0-md5:	a24087cd1b4fe6722ec05f6e88104ace
 Patch0:		%{name}-bookdir.patch
 URL:		http://www.imendio.com/projects/devhelp/
 BuildRequires:	GConf2-devel >= 2.24.0
@@ -24,6 +24,7 @@ BuildRequires:	pkgconfig
 BuildRequires:	python
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.311
+BuildRequires:	sed >= 4.0
 BuildRequires:	zlib-devel
 Requires(post,postun):	gtk+2
 Requires(post,postun):	hicolor-icon-theme
@@ -93,6 +94,9 @@ Umożliwia przeglądanie dokumentacji API w Gedit.
 %setup -q
 %patch0 -p1
 
+sed -i -e 's/^en@shaw//' po/LINGUAS
+rm -f po/en@shaw.po
+
 %build
 %{__intltoolize}
 %{__libtoolize}
@@ -102,7 +106,8 @@ Umożliwia przeglądanie dokumentacji API w Gedit.
 %{__automake}
 %configure \
 	--enable-static \
-	--disable-install-schemas
+	--disable-schemas-install \
+	--disable-silent-rules
 %{__make}
 
 %install
