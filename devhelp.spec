@@ -1,12 +1,12 @@
 Summary:	API documentation browser for GNOME
 Summary(pl.UTF-8):	Przeglądarka dokumentacji API dla GNOME
 Name:		devhelp
-Version:	2.30.1
+Version:	2.32.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/2.30/%{name}-%{version}.tar.bz2
-# Source0-md5:	447413a54d3bec2480e9a290e261703d
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/2.32/%{name}-%{version}.tar.bz2
+# Source0-md5:	c6690a45609caa00ecd9cd92f7d28915
 Patch0:		%{name}-bookdir.patch
 URL:		http://www.imendio.com/projects/devhelp/
 BuildRequires:	GConf2-devel >= 2.24.0
@@ -150,19 +150,19 @@ rm -rf $RPM_BUILD_ROOT
 
 %files libs
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libdevhelp-1.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libdevhelp-1.so.1
+%attr(755,root,root) %{_libdir}/libdevhelp-2.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libdevhelp-2.so.1
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libdevhelp-1.so
-%{_libdir}/libdevhelp-1.la
-%{_pkgconfigdir}/libdevhelp-1.0.pc
-%{_includedir}/devhelp-1.0
+%attr(755,root,root) %{_libdir}/libdevhelp-2.so
+%{_libdir}/libdevhelp-2.la
+%{_pkgconfigdir}/libdevhelp-2.0.pc
+%{_includedir}/devhelp-2.0
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/libdevhelp-1.a
+%{_libdir}/libdevhelp-2.a
 
 %files -n gedit2-plugin-devhelp
 %defattr(644,root,root,755)
