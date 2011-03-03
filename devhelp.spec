@@ -81,6 +81,7 @@ Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
 Requires:	gedit2
 Requires:	python-pygobject >= 2.27.91
+Requires:	libpeas-loader-python
 
 %description -n gedit2-plugin-devhelp
 Allows to browse API documentation in Gedit.
