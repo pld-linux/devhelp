@@ -1,12 +1,12 @@
 Summary:	API documentation browser for GNOME
 Summary(pl.UTF-8):	Przeglądarka dokumentacji API dla GNOME
 Name:		devhelp
-Version:	2.91.90
+Version:	2.91.91.2
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/2.91/%{name}-%{version}.tar.bz2
-# Source0-md5:	ae861cd89a84ad0c5fa695bf2f6c01d5
+# Source0-md5:	3c04f2dda1b72e56a27e04dd0693a619
 Patch0:		%{name}-bookdir.patch
 URL:		http://www.imendio.com/projects/devhelp/
 BuildRequires:	GConf2-devel >= 2.24.0
@@ -14,7 +14,7 @@ BuildRequires:	autoconf >= 2.64
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	gettext-devel >= 0.17
 BuildRequires:	gnome-common >= 2.24.0
-BuildRequires:	gtk+3-devel >= 3.0.0
+BuildRequires:	gtk+3-devel >= 3.0.2
 BuildRequires:	gtk-webkit3-devel >= 1.3.11
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libtool >= 2.2
@@ -24,10 +24,10 @@ BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	sed >= 4.0
 BuildRequires:	zlib-devel
-Requires(post,postun):	gtk-update-icon-cache
-Requires(post,postun):	hicolor-icon-theme
 Requires(post,preun):	GConf2 >= 2.24.0
+Requires(post,postun):	gtk-update-icon-cache
 Requires:	%{name}-libs = %{version}-%{release}
+Requires:	hicolor-icon-theme
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -54,7 +54,7 @@ Summary:	Headers for Devhelp library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki Devhelp
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	gtk+3-devel >= 3.0.0
+Requires:	gtk+3-devel >= 3.0.2
 
 %description devel
 Headers for Devhelp library.
@@ -80,8 +80,8 @@ Summary(pl.UTF-8):	Wtyczka devhelpa dla edytora Gedit
 Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
 Requires:	gedit2
-Requires:	python-pygobject >= 2.27.91
 Requires:	libpeas-loader-python
+Requires:	python-pygobject >= 2.27.91
 
 %description -n gedit2-plugin-devhelp
 Allows to browse API documentation in Gedit.
@@ -92,9 +92,6 @@ Umożliwia przeglądanie dokumentacji API w Gedit.
 %prep
 %setup -q
 %patch0 -p1
-
-sed -i -e 's/^en@shaw//' po/LINGUAS
-%{__rm} po/en@shaw.po
 
 %build
 %{__intltoolize}
@@ -145,7 +142,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}
 %{_desktopdir}/devhelp.desktop
 %{_iconsdir}/hicolor/*/apps/*.png
-%{_iconsdir}/hicolor/scalable/apps/*.svg
 %{_sysconfdir}/gconf/schemas/devhelp.schemas
 
 %files libs
