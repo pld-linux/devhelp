@@ -84,10 +84,10 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	gedit2
 
 %description -n gedit2-plugin-devhelp
-Allows to browse API documentation in Gedit.
+Plugin that allows to browse API documentation in Gedit.
 
 %description -n gedit2-plugin-devhelp -l pl.UTF-8
-Umożliwia przeglądanie dokumentacji API w Gedit.
+Wtyczka umożliwiająca przeglądanie dokumentacji API w edytorze Gedit.
 
 %prep
 %setup -q
