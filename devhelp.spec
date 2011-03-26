@@ -24,7 +24,6 @@ BuildRequires:	pkgconfig
 BuildRequires:	python
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.311
-BuildRequires:	sed >= 4.0
 BuildRequires:	zlib-devel
 Requires(post,postun):	gtk-update-icon-cache
 Requires(post,postun):	hicolor-icon-theme
@@ -94,9 +93,6 @@ Umożliwia przeglądanie dokumentacji API w Gedit.
 %setup -q
 %patch0 -p1
 
-sed -i -e 's/^en@shaw//' po/LINGUAS
-rm -f po/en@shaw.po
-
 %build
 %{__intltoolize}
 %{__libtoolize}
@@ -118,7 +114,7 @@ install -d $RPM_BUILD_ROOT%{_sysconfdir}/gconf \
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-rm -f $RPM_BUILD_ROOT%{_libdir}/gedit-2/plugins/%{name}/*.py
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/gedit-2/plugins/%{name}/*.py
 
 %find_lang %{name}
 
