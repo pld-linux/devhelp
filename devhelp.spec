@@ -1,34 +1,32 @@
 Summary:	API documentation browser for GNOME
 Summary(pl.UTF-8):	Przeglądarka dokumentacji API dla GNOME
 Name:		devhelp
-Version:	2.32.0
-Release:	2
+Version:	3.0.0
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/2.32/%{name}-%{version}.tar.bz2
-# Source0-md5:	c6690a45609caa00ecd9cd92f7d28915
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/3.0/%{name}-%{version}.tar.bz2
+# Source0-md5:	70b77c3006b5d2ecbf1244988421677d
 Patch0:		%{name}-bookdir.patch
 URL:		http://www.imendio.com/projects/devhelp/
 BuildRequires:	GConf2-devel >= 2.24.0
-BuildRequires:	autoconf >= 2.60
-BuildRequires:	automake >= 1:1.9
-BuildRequires:	gettext-devel
+BuildRequires:	autoconf >= 2.64
+BuildRequires:	automake >= 1:1.11
+BuildRequires:	gettext-devel >= 0.17
 BuildRequires:	gnome-common >= 2.24.0
-BuildRequires:	gtk+2-devel >= 2:2.14.0
-BuildRequires:	gtk-webkit-devel >= 1.1.13
+BuildRequires:	gtk+3-devel >= 3.0.2
+BuildRequires:	gtk-webkit3-devel >= 1.3.11
 BuildRequires:	intltool >= 0.40.0
-BuildRequires:	libtool
-BuildRequires:	libunique-devel >= 1.0
-BuildRequires:	libwnck-devel >= 2.24.0
+BuildRequires:	libtool >= 2.2
 BuildRequires:	pkgconfig
-BuildRequires:	python
+BuildRequires:	python >= 2.3
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	zlib-devel
+Requires(post,preun):	GConf2 >= 2.24.0
 Requires(post,postun):	gtk-update-icon-cache
-Requires(post,postun):	hicolor-icon-theme
-Requires(post,preun):	GConf2 >= 2.20.0
 Requires:	%{name}-libs = %{version}-%{release}
+Requires:	hicolor-icon-theme
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -55,8 +53,7 @@ Summary:	Headers for Devhelp library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki Devhelp
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	gtk+2-devel >= 2:2.14.0
-Requires:	libwnck-devel >= 2.24.0
+Requires:	gtk+3-devel >= 3.0.2
 
 %description devel
 Headers for Devhelp library.
@@ -82,6 +79,8 @@ Summary(pl.UTF-8):	Wtyczka devhelpa dla edytora Gedit
 Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
 Requires:	gedit2
+Requires:	libpeas-loader-python
+Requires:	python-pygobject >= 2.27.91
 
 %description -n gedit2-plugin-devhelp
 Plugin that allows to browse API documentation in Gedit.
@@ -114,7 +113,8 @@ install -d $RPM_BUILD_ROOT%{_sysconfdir}/gconf \
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/gedit-2/plugins/%{name}/*.py
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/gedit/plugins/*.py \
+	$RPM_BUILD_ROOT%{_libdir}/*.la
 
 %find_lang %{name}
 
@@ -141,27 +141,24 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}
 %{_desktopdir}/devhelp.desktop
 %{_iconsdir}/hicolor/*/apps/*.png
-%{_iconsdir}/hicolor/scalable/apps/*.svg
 %{_sysconfdir}/gconf/schemas/devhelp.schemas
 
 %files libs
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libdevhelp-2.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libdevhelp-2.so.1
+%attr(755,root,root) %{_libdir}/libdevhelp-3.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libdevhelp-3.so.0
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libdevhelp-2.so
-%{_libdir}/libdevhelp-2.la
-%{_pkgconfigdir}/libdevhelp-2.0.pc
-%{_includedir}/devhelp-2.0
+%attr(755,root,root) %{_libdir}/libdevhelp-3.so
+%{_pkgconfigdir}/libdevhelp-3.0.pc
+%{_includedir}/devhelp-3.0
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/libdevhelp-2.a
+%{_libdir}/libdevhelp-3.a
 
 %files -n gedit2-plugin-devhelp
 %defattr(644,root,root,755)
-%dir %{_libdir}/gedit-2/plugins/%{name}
-%{_libdir}/gedit-2/plugins/%{name}.gedit-plugin
-%{_libdir}/gedit-2/plugins/%{name}/*.py[oc]
+%{_libdir}/gedit/plugins/devhelp.plugin
+%{_libdir}/gedit/plugins/devhelp.py[co]
