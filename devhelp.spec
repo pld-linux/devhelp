@@ -2,7 +2,7 @@ Summary:	API documentation browser for GNOME
 Summary(pl.UTF-8):	Przeglądarka dokumentacji API dla GNOME
 Name:		devhelp
 Version:	2.32.0
-Release:	2
+Release:	3
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/2.32/%{name}-%{version}.tar.bz2
@@ -115,6 +115,7 @@ install -d $RPM_BUILD_ROOT%{_sysconfdir}/gconf \
 	DESTDIR=$RPM_BUILD_ROOT
 
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/gedit-2/plugins/%{name}/*.py
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libdevhelp-2.la
 
 %find_lang %{name}
 
@@ -152,7 +153,6 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libdevhelp-2.so
-%{_libdir}/libdevhelp-2.la
 %{_pkgconfigdir}/libdevhelp-2.0.pc
 %{_includedir}/devhelp-2.0
 
