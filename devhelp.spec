@@ -1,12 +1,12 @@
 Summary:	API documentation browser for GNOME
 Summary(pl.UTF-8):	Przeglądarka dokumentacji API dla GNOME
 Name:		devhelp
-Version:	3.0.0
+Version:	3.2.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/3.0/%{name}-%{version}.tar.bz2
-# Source0-md5:	70b77c3006b5d2ecbf1244988421677d
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/3.2/%{name}-%{version}.tar.xz
+# Source0-md5:	f1b9eb558d8d85a50a4ecfcdb4545807
 Patch0:		%{name}-bookdir.patch
 URL:		http://www.imendio.com/projects/devhelp/
 BuildRequires:	GConf2-devel >= 2.24.0
@@ -22,6 +22,8 @@ BuildRequires:	pkgconfig
 BuildRequires:	python >= 2.3
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.311
+BuildRequires:	tar >= 1:1.22
+BuildRequires:	xz
 BuildRequires:	zlib-devel
 Requires(post,preun):	GConf2 >= 2.24.0
 Requires(post,postun):	gtk-update-icon-cache
@@ -136,7 +138,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README TODO
+%doc AUTHORS NEWS README TODO
 %attr(755,root,root) %{_bindir}/devhelp
 %{_datadir}/%{name}
 %{_desktopdir}/devhelp.desktop
