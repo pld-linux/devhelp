@@ -76,19 +76,19 @@ Static version of Devhelp library.
 %description static -l pl.UTF-8
 Statyczna biblioteka Devhelp.
 
-%package -n gedit2-plugin-devhelp
+%package -n gedit-plugin-devhelp
 Summary:	Devhelp plugin for Gedit editor
 Summary(pl.UTF-8):	Wtyczka devhelpa dla edytora Gedit
 Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
-Requires:	gedit2
+Requires:	gedit
 Requires:	libpeas-loader-python
 Requires:	python-pygobject >= 2.27.91
 
-%description -n gedit2-plugin-devhelp
+%description -n gedit-plugin-devhelp
 Plugin that allows to browse API documentation in Gedit.
 
-%description -n gedit2-plugin-devhelp -l pl.UTF-8
+%description -n gedit-plugin-devhelp -l pl.UTF-8
 Wtyczka umożliwiająca przeglądanie dokumentacji API w edytorze Gedit.
 
 %prep
@@ -161,7 +161,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_libdir}/libdevhelp-3.a
 
-%files -n gedit2-plugin-devhelp
+%files -n gedit-plugin-devhelp
 %defattr(644,root,root,755)
 %{_libdir}/gedit/plugins/devhelp.plugin
 %{_libdir}/gedit/plugins/devhelp.py[co]
