@@ -84,6 +84,7 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	gedit
 Requires:	libpeas-loader-python
 Requires:	python-pygobject >= 2.27.91
+Obsoletes:	gedit2-plugin-devhelp
 
 %description -n gedit-plugin-devhelp
 Plugin that allows to browse API documentation in Gedit.
