@@ -1,20 +1,21 @@
 Summary:	API documentation browser for GNOME
 Summary(pl.UTF-8):	Przeglądarka dokumentacji API dla GNOME
 Name:		devhelp
-Version:	3.4.1
-Release:	2
+Version:	3.6.0
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/3.4/%{name}-%{version}.tar.xz
-# Source0-md5:	d9428af3d308c1f97c2a2eebe6b451c0
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/3.6/%{name}-%{version}.tar.xz
+# Source0-md5:	8076f10f493be38cef55e770db2579c5
 Patch0:		%{name}-bookdir.patch
 URL:		http://www.imendio.com/projects/devhelp/
 BuildRequires:	GConf2-devel >= 2.24.0
 BuildRequires:	autoconf >= 2.64
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	gettext-devel >= 0.17
+BuildRequires:	glib2-devel >= 1:2.32.0
 BuildRequires:	gnome-common >= 2.24.0
-BuildRequires:	gtk+3-devel >= 3.0.2
+BuildRequires:	gtk+3-devel >= 3.4.0
 BuildRequires:	gtk-webkit3-devel >= 1.6.0
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libtool >= 2:2.2
@@ -56,7 +57,8 @@ Summary:	Headers for Devhelp library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki Devhelp
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	gtk+3-devel >= 3.0.2
+Requires:	glib2-devel >= 1:2.32.0
+Requires:	gtk+3-devel >= 3.4.0
 
 %description devel
 Headers for Devhelp library.
@@ -150,7 +152,7 @@ rm -rf $RPM_BUILD_ROOT
 %files libs
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libdevhelp-3.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libdevhelp-3.so.0
+%attr(755,root,root) %ghost %{_libdir}/libdevhelp-3.so.1
 
 %files devel
 %defattr(644,root,root,755)
