@@ -1,22 +1,21 @@
 Summary:	API documentation browser for GNOME
 Summary(pl.UTF-8):	Przeglądarka dokumentacji API dla GNOME
 Name:		devhelp
-Version:	3.6.1
-Release:	2
+Version:	3.8.0
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/3.6/%{name}-%{version}.tar.xz
-# Source0-md5:	56c03dfc591f4a1a7b975291338bf12f
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/3.8/%{name}-%{version}.tar.xz
+# Source0-md5:	e6d8bef5cf698c5d25a0e1c8593a2f63
 Patch0:		%{name}-bookdir.patch
 URL:		http://www.imendio.com/projects/devhelp/
-BuildRequires:	GConf2-devel >= 2.24.0
 BuildRequires:	autoconf >= 2.64
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	gettext-devel >= 0.17
 BuildRequires:	glib2-devel >= 1:2.32.0
 BuildRequires:	gnome-common >= 2.24.0
-BuildRequires:	gtk+3-devel >= 3.4.0
-BuildRequires:	gtk-webkit3-devel >= 1.6.0
+BuildRequires:	gtk+3-devel >= 3.6.0
+BuildRequires:	gtk-webkit3-devel >= 1.10.0
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libtool >= 2:2.2
 BuildRequires:	pkgconfig
@@ -26,10 +25,10 @@ BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRequires:	zlib-devel
-Requires(post,preun):	GConf2 >= 2.24.0
+Requires(post,postun):	glib2 >= 1:2.32.0
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	gtk-webkit3 >= 1.6.0
+Requires:	gtk-webkit3 >= 1.10.0
 Requires:	hicolor-icon-theme
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
@@ -58,7 +57,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki Devhelp
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.32.0
-Requires:	gtk+3-devel >= 3.4.0
+Requires:	gtk+3-devel >= 3.6.0
 
 %description devel
 Headers for Devhelp library.
@@ -84,8 +83,8 @@ Summary(pl.UTF-8):	Wtyczka devhelpa dla edytora Gedit
 Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
 Requires:	gedit
-Requires:	libpeas-loader-python
-Requires:	python-pygobject >= 2.27.91
+Requires:	libpeas-loader-python3
+Requires:	python-pygobject3
 Obsoletes:	gedit2-plugin-devhelp
 
 %description -n gedit-plugin-devhelp
@@ -101,20 +100,18 @@ Wtyczka umożliwiająca przeglądanie dokumentacji API w edytorze Gedit.
 %build
 %{__intltoolize}
 %{__libtoolize}
-%{__aclocal}
+%{__aclocal} -I m4 -I libgd
 %{__autoconf}
 %{__autoheader}
 %{__automake}
 %configure \
 	--enable-static \
-	--disable-schemas-install \
 	--disable-silent-rules
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_sysconfdir}/gconf \
-	$RPM_BUILD_ROOT%{_datadir}/%{name}/{books,references,specs}
+install -d $RPM_BUILD_ROOT%{_datadir}/%{name}/{books,references,specs}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
@@ -128,13 +125,11 @@ install -d $RPM_BUILD_ROOT%{_sysconfdir}/gconf \
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%gconf_schema_install devhelp.schemas
+%glib_compile_schemas
 %update_icon_cache hicolor
 
-%preun
-%gconf_schema_uninstall devhelp.schemas
-
 %postun
+%glib_compile_schemas
 %update_icon_cache hicolor
 
 %post	libs -p /sbin/ldconfig
@@ -147,12 +142,13 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}
 %{_desktopdir}/devhelp.desktop
 %{_iconsdir}/hicolor/*/apps/*.png
-%{_sysconfdir}/gconf/schemas/devhelp.schemas
+%{_datadir}/GConf/gsettings/devhelp.convert
+%{_datadir}/glib-2.0/schemas/org.gnome.devhelp.gschema.xml
 
 %files libs
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libdevhelp-3.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libdevhelp-3.so.1
+%attr(755,root,root) %ghost %{_libdir}/libdevhelp-3.so.2
 
 %files devel
 %defattr(644,root,root,755)
