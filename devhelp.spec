@@ -2,12 +2,13 @@ Summary:	API documentation browser for GNOME
 Summary(pl.UTF-8):	Przeglądarka dokumentacji API dla GNOME
 Name:		devhelp
 Version:	3.8.0
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/3.8/%{name}-%{version}.tar.xz
 # Source0-md5:	e6d8bef5cf698c5d25a0e1c8593a2f63
 Patch0:		%{name}-bookdir.patch
+Patch1:		%{name}-use-python3.patch
 URL:		http://www.imendio.com/projects/devhelp/
 BuildRequires:	autoconf >= 2.64
 BuildRequires:	automake >= 1:1.11
@@ -19,7 +20,7 @@ BuildRequires:	gtk-webkit3-devel >= 1.10.0
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libtool >= 2:2.2
 BuildRequires:	pkgconfig
-BuildRequires:	python >= 2.3
+BuildRequires:	python3 >= 1:3.3
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	tar >= 1:1.22
@@ -84,7 +85,7 @@ Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
 Requires:	gedit
 Requires:	libpeas-loader-python3
-Requires:	python-pygobject3
+Requires:	python3-pygobject3
 Obsoletes:	gedit2-plugin-devhelp
 
 %description -n gedit-plugin-devhelp
@@ -96,6 +97,7 @@ Wtyczka umożliwiająca przeglądanie dokumentacji API w edytorze Gedit.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__intltoolize}
@@ -116,8 +118,7 @@ install -d $RPM_BUILD_ROOT%{_datadir}/%{name}/{books,references,specs}
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/gedit/plugins/*.py \
-	$RPM_BUILD_ROOT%{_libdir}/*.la
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
 
 %find_lang %{name}
 
@@ -162,5 +163,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n gedit-plugin-devhelp
 %defattr(644,root,root,755)
+%{_libdir}/gedit/plugins/__pycache__
 %{_libdir}/gedit/plugins/devhelp.plugin
-%{_libdir}/gedit/plugins/devhelp.py[co]
+%{_libdir}/gedit/plugins/devhelp.py
