@@ -1,12 +1,12 @@
 Summary:	API documentation browser for GNOME
 Summary(pl.UTF-8):	Przeglądarka dokumentacji API dla GNOME
 Name:		devhelp
-Version:	3.8.1
+Version:	3.8.2
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/3.8/%{name}-%{version}.tar.xz
-# Source0-md5:	3be550a493eb78f0f4dc1b3f94d62049
+# Source0-md5:	9dfdc303fad56abeb6d8d6a69afd36bd
 Patch0:		%{name}-bookdir.patch
 Patch1:		%{name}-use-python3.patch
 URL:		http://www.imendio.com/projects/devhelp/
