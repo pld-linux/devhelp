@@ -1,22 +1,22 @@
 Summary:	API documentation browser for GNOME
 Summary(pl.UTF-8):	Przeglądarka dokumentacji API dla GNOME
 Name:		devhelp
-Version:	3.8.2
+Version:	3.10.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/3.8/%{name}-%{version}.tar.xz
-# Source0-md5:	9dfdc303fad56abeb6d8d6a69afd36bd
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/3.10/%{name}-%{version}.tar.xz
+# Source0-md5:	4c7d2d01d0570251647e7d82a09a558c
 Patch0:		%{name}-bookdir.patch
 Patch1:		%{name}-use-python3.patch
 URL:		http://www.imendio.com/projects/devhelp/
 BuildRequires:	autoconf >= 2.64
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	gettext-devel >= 0.17
-BuildRequires:	glib2-devel >= 1:2.32.0
+BuildRequires:	glib2-devel >= 1:2.37.3
 BuildRequires:	gnome-common >= 2.24.0
-BuildRequires:	gtk+3-devel >= 3.6.0
-BuildRequires:	gtk-webkit3-devel >= 1.10.0
+BuildRequires:	gtk+3-devel >= 3.9.8
+BuildRequires:	gtk-webkit3-devel >= 2.0.0
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libtool >= 2:2.2
 BuildRequires:	pkgconfig
@@ -102,7 +102,7 @@ Wtyczka umożliwiająca przeglądanie dokumentacji API w edytorze Gedit.
 %build
 %{__intltoolize}
 %{__libtoolize}
-%{__aclocal} -I m4 -I libgd
+%{__aclocal} -I m4
 %{__autoconf}
 %{__autoheader}
 %{__automake}
