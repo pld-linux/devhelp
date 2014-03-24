@@ -1,21 +1,21 @@
 Summary:	API documentation browser for GNOME
 Summary(pl.UTF-8):	Przeglądarka dokumentacji API dla GNOME
 Name:		devhelp
-Version:	3.10.2
+Version:	3.12.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/3.10/%{name}-%{version}.tar.xz
-# Source0-md5:	9c5aa049f757c551fb7ca4c4651694fa
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/3.12/%{name}-%{version}.tar.xz
+# Source0-md5:	cb37d678fad2d7a7b8cd7101d851345f
 Patch0:		%{name}-bookdir.patch
 Patch1:		%{name}-use-python3.patch
 URL:		http://www.imendio.com/projects/devhelp/
 BuildRequires:	autoconf >= 2.64
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	gettext-devel >= 0.17
-BuildRequires:	glib2-devel >= 1:2.37.3
+BuildRequires:	glib2-devel >= 1:2.38.0
 BuildRequires:	gnome-common >= 2.24.0
-BuildRequires:	gtk+3-devel >= 3.9.8
+BuildRequires:	gtk+3-devel >= 3.10.0
 BuildRequires:	gtk-webkit3-devel >= 2.0.0
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libtool >= 2:2.2
@@ -29,7 +29,7 @@ BuildRequires:	zlib-devel
 Requires(post,postun):	glib2 >= 1:2.32.0
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	gtk-webkit3 >= 1.10.0
+Requires:	gtk-webkit3 >= 2.0.0
 Requires:	hicolor-icon-theme
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
@@ -57,8 +57,8 @@ Summary:	Headers for Devhelp library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki Devhelp
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.32.0
-Requires:	gtk+3-devel >= 3.6.0
+Requires:	glib2-devel >= 1:2.38.0
+Requires:	gtk+3-devel >= 3.10.0
 
 %description devel
 Headers for Devhelp library.
@@ -145,6 +145,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/*/apps/*.png
 %{_datadir}/GConf/gsettings/devhelp.convert
 %{_datadir}/glib-2.0/schemas/org.gnome.devhelp.gschema.xml
+%{_datadir}/appdata/devhelp.appdata.xml
 
 %files libs
 %defattr(644,root,root,755)
