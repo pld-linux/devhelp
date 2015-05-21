@@ -9,7 +9,7 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/3.16/%{name}-%{version}.
 # Source0-md5:	ee158fdb4cd29f7bde0026d69e3f333f
 Patch0:		%{name}-bookdir.patch
 Patch1:		%{name}-use-python3.patch
-URL:		http://www.imendio.com/projects/devhelp/
+URL:		https://wiki.gnome.org/Apps/Devhelp
 BuildRequires:	autoconf >= 2.64
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	gettext-tools >= 0.17
@@ -45,6 +45,9 @@ Przeglądarka dokumentacji API dla GNOME.
 Summary:	Library to embed Devhelp in other applications
 Summary(pl.UTF-8):	Biblioteka do osadzania Devhelp w innych aplikacjach
 Group:		X11/Libraries
+Requires:	glib2 >= 1:2.38.0
+Requires:	gtk+3 >= 3.14.0
+Requires:	gtk-webkit4 >= 2.0.0
 
 %description libs
 Library of Devhelp for embedding into other applications.
@@ -59,6 +62,7 @@ Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.38.0
 Requires:	gtk+3-devel >= 3.14.0
+Requires:	gtk-webkit4-devel >= 2.0.0
 
 %description devel
 Headers for Devhelp library.
@@ -83,9 +87,11 @@ Summary:	Devhelp plugin for Gedit editor
 Summary(pl.UTF-8):	Wtyczka devhelpa dla edytora Gedit
 Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
-Requires:	gedit
+# python3 based gedit
+Requires:	gedit >= 3.8
 Requires:	libpeas-loader-python3
-Requires:	python3-pygobject3
+Requires:	python3 >= 1:3.3
+Requires:	python3-pygobject3 >= 3
 Obsoletes:	gedit2-plugin-devhelp
 
 %description -n gedit-plugin-devhelp
@@ -142,8 +148,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/devhelp
 %{_datadir}/%{name}
 %{_desktopdir}/devhelp.desktop
-%{_iconsdir}/hicolor/*/apps/*.png
-%{_iconsdir}/hicolor/*/apps/*.svg
+%{_iconsdir}/hicolor/*x*/apps/devhelp.png
+%{_iconsdir}/hicolor/symbolic/apps/devhelp-symbolic.svg
 %{_datadir}/GConf/gsettings/devhelp.convert
 %{_datadir}/glib-2.0/schemas/org.gnome.devhelp.gschema.xml
 %{_datadir}/appdata/devhelp.appdata.xml
