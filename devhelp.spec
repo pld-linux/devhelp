@@ -1,12 +1,12 @@
 Summary:	API documentation browser for GNOME
 Summary(pl.UTF-8):	Przeglądarka dokumentacji API dla GNOME
 Name:		devhelp
-Version:	3.16.1
+Version:	3.18.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/3.16/%{name}-%{version}.tar.xz
-# Source0-md5:	ee158fdb4cd29f7bde0026d69e3f333f
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/3.18/%{name}-%{version}.tar.xz
+# Source0-md5:	1b316ca88da22386dc5e7587d30e166b
 Patch0:		%{name}-bookdir.patch
 Patch1:		%{name}-use-python3.patch
 URL:		https://wiki.gnome.org/Apps/Devhelp
@@ -16,7 +16,7 @@ BuildRequires:	gettext-tools >= 0.17
 BuildRequires:	glib2-devel >= 1:2.38.0
 BuildRequires:	gnome-common >= 2.24.0
 BuildRequires:	gtk+3-devel >= 3.14.0
-BuildRequires:	gtk-webkit4-devel >= 2.0.0
+BuildRequires:	gtk-webkit4-devel >= 2.6.0
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libtool >= 2:2.2
 BuildRequires:	pkgconfig
@@ -29,7 +29,7 @@ BuildRequires:	zlib-devel
 Requires(post,postun):	glib2 >= 1:2.32.0
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	gtk-webkit4 >= 2.0.0
+Requires:	gtk-webkit4 >= 2.6.0
 Requires:	hicolor-icon-theme
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
@@ -47,7 +47,7 @@ Summary(pl.UTF-8):	Biblioteka do osadzania Devhelp w innych aplikacjach
 Group:		X11/Libraries
 Requires:	glib2 >= 1:2.38.0
 Requires:	gtk+3 >= 3.14.0
-Requires:	gtk-webkit4 >= 2.0.0
+Requires:	gtk-webkit4 >= 2.6.0
 
 %description libs
 Library of Devhelp for embedding into other applications.
@@ -62,7 +62,7 @@ Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.38.0
 Requires:	gtk+3-devel >= 3.14.0
-Requires:	gtk-webkit4-devel >= 2.0.0
+Requires:	gtk-webkit4-devel >= 2.6.0
 
 %description devel
 Headers for Devhelp library.
@@ -147,12 +147,14 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS NEWS README TODO
 %attr(755,root,root) %{_bindir}/devhelp
 %{_datadir}/%{name}
-%{_desktopdir}/devhelp.desktop
+%{_desktopdir}/org.gnome.Devhelp.desktop
 %{_iconsdir}/hicolor/*x*/apps/devhelp.png
 %{_iconsdir}/hicolor/symbolic/apps/devhelp-symbolic.svg
 %{_datadir}/GConf/gsettings/devhelp.convert
 %{_datadir}/glib-2.0/schemas/org.gnome.devhelp.gschema.xml
-%{_datadir}/appdata/devhelp.appdata.xml
+%{_datadir}/appdata/org.gnome.Devhelp.appdata.xml
+%{_datadir}/dbus-1/services/org.gnome.Devhelp.service
+%{_mandir}/man1/devhelp.1*
 
 %files libs
 %defattr(644,root,root,755)
