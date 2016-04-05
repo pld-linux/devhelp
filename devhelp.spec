@@ -1,12 +1,12 @@
 Summary:	API documentation browser for GNOME
 Summary(pl.UTF-8):	Przeglądarka dokumentacji API dla GNOME
 Name:		devhelp
-Version:	3.18.1
+Version:	3.20.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/3.18/%{name}-%{version}.tar.xz
-# Source0-md5:	d3f36ccd54eecda822db59a45f2b83b7
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/3.20/%{name}-%{version}.tar.xz
+# Source0-md5:	be0c5522fca8e4fc5f94ba241ce6b171
 Patch0:		%{name}-bookdir.patch
 Patch1:		%{name}-use-python3.patch
 URL:		https://wiki.gnome.org/Apps/Devhelp
@@ -15,7 +15,7 @@ BuildRequires:	automake >= 1:1.11
 BuildRequires:	gettext-tools >= 0.17
 BuildRequires:	glib2-devel >= 1:2.38.0
 BuildRequires:	gnome-common >= 2.24.0
-BuildRequires:	gtk+3-devel >= 3.14.0
+BuildRequires:	gtk+3-devel >= 3.20.0
 BuildRequires:	gtk-webkit4-devel >= 2.6.0
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libtool >= 2:2.2
@@ -46,7 +46,7 @@ Summary:	Library to embed Devhelp in other applications
 Summary(pl.UTF-8):	Biblioteka do osadzania Devhelp w innych aplikacjach
 Group:		X11/Libraries
 Requires:	glib2 >= 1:2.38.0
-Requires:	gtk+3 >= 3.14.0
+Requires:	gtk+3 >= 3.20.0
 Requires:	gtk-webkit4 >= 2.6.0
 
 %description libs
@@ -61,7 +61,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki Devhelp
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.38.0
-Requires:	gtk+3-devel >= 3.14.0
+Requires:	gtk+3-devel >= 3.20.0
 Requires:	gtk-webkit4-devel >= 2.6.0
 
 %description devel
