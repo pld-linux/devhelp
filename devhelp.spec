@@ -1,23 +1,28 @@
+# Conditional build:
+%bcond_without  apidocs         # disable gtk-doc
+%bcond_without  static_libs     # static library
+
 Summary:	API documentation browser for GNOME
 Summary(pl.UTF-8):	Przeglądarka dokumentacji API dla GNOME
 Name:		devhelp
-Version:	3.20.0
+Version:	3.24.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/3.20/%{name}-%{version}.tar.xz
-# Source0-md5:	be0c5522fca8e4fc5f94ba241ce6b171
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/3.24/%{name}-%{version}.tar.xz
+# Source0-md5:	5aeabfd755e73082344ae46c2f8f6d66
 Patch0:		%{name}-bookdir.patch
 Patch1:		%{name}-use-python3.patch
 URL:		https://wiki.gnome.org/Apps/Devhelp
 BuildRequires:	autoconf >= 2.64
-BuildRequires:	automake >= 1:1.11
-BuildRequires:	gettext-tools >= 0.17
+BuildRequires:	automake >= 1:1.14
+BuildRequires:	gettext-tools >= 0.19.7
 BuildRequires:	glib2-devel >= 1:2.38.0
 BuildRequires:	gnome-common >= 2.24.0
+BuildRequires:	gobject-introspection-devel >= 1.30.0
 BuildRequires:	gtk+3-devel >= 3.20.0
+%{?with_apidocs:BuildRequires:	gtk-doc >= 1.25}
 BuildRequires:	gtk-webkit4-devel >= 2.6.0
-BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libtool >= 2:2.2
 BuildRequires:	pkgconfig
 BuildRequires:	python3 >= 1:3.3
@@ -82,6 +87,21 @@ Static version of Devhelp library.
 %description static -l pl.UTF-8
 Statyczna biblioteka Devhelp.
 
+%package apidocs
+Summary:	Devhelp API documetation
+Summary(pl.UTF-8):	Dokumentacja API Devhelp
+Group:		Documentation
+Requires:	gtk-doc-common
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
+
+%description apidocs
+Devhelp API documetation.
+
+%description apidocs -l pl.UTF-8
+Dokumentacja API Devhelp.
+
 %package -n gedit-plugin-devhelp
 Summary:	Devhelp plugin for Gedit editor
 Summary(pl.UTF-8):	Wtyczka devhelpa dla edytora Gedit
@@ -106,14 +126,15 @@ Wtyczka umożliwiająca przeglądanie dokumentacji API w edytorze Gedit.
 %patch1 -p1
 
 %build
-%{__intltoolize}
 %{__libtoolize}
 %{__aclocal} -I m4
 %{__autoconf}
 %{__autoheader}
 %{__automake}
 %configure \
-	--enable-static \
+	%{__enable_disable apidocs gtk-doc} \
+	%{__enable_disable static_libs static} \
+	%{?with_apidocs:--with-html-dir=%{_gtkdocdir}} \
 	--disable-silent-rules
 %{__make}
 
@@ -159,17 +180,25 @@ rm -rf $RPM_BUILD_ROOT
 %files libs
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libdevhelp-3.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libdevhelp-3.so.2
+%attr(755,root,root) %ghost %{_libdir}/libdevhelp-3.so.3
+%{_libdir}/girepository-1.0/Devhelp-3.0.typelib
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libdevhelp-3.so
+%{_datadir}/gir-1.0/Devhelp-3.0.gir
 %{_pkgconfigdir}/libdevhelp-3.0.pc
 %{_includedir}/devhelp-3.0
 
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libdevhelp-3.a
+
+%if %{with apidocs}
+%files apidocs
+%defattr(644,root,root,755)
+%{_gtkdocdir}/devhelp-3
+%endif
 
 %files -n gedit-plugin-devhelp
 %defattr(644,root,root,755)
