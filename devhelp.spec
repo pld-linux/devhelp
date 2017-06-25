@@ -1,3 +1,4 @@
+#
 # Conditional build:
 %bcond_without  apidocs         # disable gtk-doc
 %bcond_without  static_libs     # static library
@@ -34,7 +35,6 @@ BuildRequires:	zlib-devel
 Requires(post,postun):	glib2 >= 1:2.38.0
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	gtk-webkit4 >= 2.6.0
 Requires:	hicolor-icon-theme
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
