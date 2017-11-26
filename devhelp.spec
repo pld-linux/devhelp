@@ -6,12 +6,12 @@
 Summary:	API documentation browser for GNOME
 Summary(pl.UTF-8):	Przeglądarka dokumentacji API dla GNOME
 Name:		devhelp
-Version:	3.24.0
+Version:	3.26.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/3.24/%{name}-%{version}.tar.xz
-# Source0-md5:	5aeabfd755e73082344ae46c2f8f6d66
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/3.26/%{name}-%{version}.tar.xz
+# Source0-md5:	c20448b750f874e9a254427f8956bb43
 Patch0:		%{name}-bookdir.patch
 Patch1:		%{name}-use-python3.patch
 URL:		https://wiki.gnome.org/Apps/Devhelp
@@ -165,7 +165,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS NEWS README TODO
+%doc AUTHORS NEWS README
 %attr(755,root,root) %{_bindir}/devhelp
 %{_datadir}/%{name}
 %{_desktopdir}/org.gnome.Devhelp.desktop
@@ -180,7 +180,7 @@ rm -rf $RPM_BUILD_ROOT
 %files libs
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libdevhelp-3.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libdevhelp-3.so.3
+%attr(755,root,root) %ghost %{_libdir}/libdevhelp-3.so.4
 %{_libdir}/girepository-1.0/Devhelp-3.0.typelib
 
 %files devel
