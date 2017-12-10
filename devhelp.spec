@@ -6,12 +6,12 @@
 Summary:	API documentation browser for GNOME
 Summary(pl.UTF-8):	Przeglądarka dokumentacji API dla GNOME
 Name:		devhelp
-Version:	3.26.0
+Version:	3.26.1
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/3.26/%{name}-%{version}.tar.xz
-# Source0-md5:	c20448b750f874e9a254427f8956bb43
+# Source0-md5:	825da3043a238733f96b7929a5400fa8
 Patch0:		%{name}-bookdir.patch
 Patch1:		%{name}-use-python3.patch
 URL:		https://wiki.gnome.org/Apps/Devhelp
@@ -21,7 +21,7 @@ BuildRequires:	gettext-tools >= 0.19.7
 BuildRequires:	glib2-devel >= 1:2.38.0
 BuildRequires:	gnome-common >= 2.24.0
 BuildRequires:	gobject-introspection-devel >= 1.30.0
-BuildRequires:	gtk+3-devel >= 3.20.0
+BuildRequires:	gtk+3-devel >= 3.22.0
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.25}
 BuildRequires:	gtk-webkit4-devel >= 2.6.0
 BuildRequires:	libtool >= 2:2.2
@@ -66,7 +66,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki Devhelp
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.38.0
-Requires:	gtk+3-devel >= 3.20.0
+Requires:	gtk+3-devel >= 3.22.0
 Requires:	gtk-webkit4-devel >= 2.6.0
 
 %description devel
@@ -173,7 +173,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/symbolic/apps/devhelp-symbolic.svg
 %{_datadir}/GConf/gsettings/devhelp.convert
 %{_datadir}/glib-2.0/schemas/org.gnome.devhelp.gschema.xml
-%{_datadir}/appdata/org.gnome.Devhelp.appdata.xml
+%{_datadir}/metainfo/org.gnome.Devhelp.appdata.xml
 %{_datadir}/dbus-1/services/org.gnome.Devhelp.service
 %{_mandir}/man1/devhelp.1*
 
