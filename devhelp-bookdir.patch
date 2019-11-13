@@ -1,14 +1,13 @@
-diff -urN devhelp-2.32.0/src/dh-book-manager.c devhelp-2.32.0.new//src/dh-book-manager.c
---- devhelp-2.32.0/src/dh-book-manager.c	2010-09-13 12:10:02.000000000 +0200
-+++ devhelp-2.32.0.new//src/dh-book-manager.c	2010-09-30 22:25:57.471564288 +0200
-@@ -145,6 +145,10 @@
-         dir = g_build_filename (data_dir, "gtk-doc", "html", NULL);
-         book_manager_add_from_dir (book_manager, dir);
+--- devhelp-3.34.0/devhelp/dh-book-list-builder.c.orig	2019-11-13 16:42:36.696750189 +0100
++++ devhelp-3.34.0/devhelp/dh-book-list-builder.c	2019-11-13 16:42:40.750061563 +0100
+@@ -140,6 +140,10 @@
+         add_book_list_directory (builder, dir);
          g_free (dir);
-+        
-+        dir = g_build_filename (data_dir, "doc", "gtk-doc", "html", NULL);
-+        book_manager_add_from_dir (book_manager, dir);
-+        g_free (dir);
  
++        dir = g_build_filename (data_dir, "doc", "gtk-doc", "html", NULL);
++        add_book_list_directory (builder, dir);
++        g_free (dir);
++
          dir = g_build_filename (data_dir, "devhelp", "books", NULL);
-         book_manager_add_from_dir (book_manager, dir);
+         add_book_list_directory (builder, dir);
+         g_free (dir);
