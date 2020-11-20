@@ -6,12 +6,12 @@
 Summary:	API documentation browser for GNOME
 Summary(pl.UTF-8):	Przeglądarka dokumentacji API dla GNOME
 Name:		devhelp
-Version:	3.38.0
+Version:	3.38.1
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/devhelp/3.38/%{name}-%{version}.tar.xz
-# Source0-md5:	721525b49d5c28d90dbbed9d8c989a05
+Source0:	https://download.gnome.org/sources/devhelp/3.38/%{name}-%{version}.tar.xz
+# Source0-md5:	ec7631b34d7017cb5a8b5f5b23fa2b1a
 Patch0:		%{name}-bookdir.patch
 URL:		https://wiki.gnome.org/Apps/Devhelp
 BuildRequires:	amtk-devel >= 5.0
@@ -27,7 +27,7 @@ BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
 BuildRequires:	python3-devel >= 1:3.3
 BuildRequires:	rpm-pythonprov
-BuildRequires:	rpmbuild(macros) >= 1.736
+BuildRequires:	rpmbuild(macros) >= 1.752
 BuildRequires:	sed >= 4.0
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
@@ -91,9 +91,7 @@ Summary:	Devhelp API documetation
 Summary(pl.UTF-8):	Dokumentacja API Devhelp
 Group:		Documentation
 Requires:	gtk-doc-common
-%if "%{_rpmversion}" >= "4.6"
-BuildArch:	noarch
-%endif
+%{?noarchpackage}
 
 %description apidocs
 Devhelp API documetation.
