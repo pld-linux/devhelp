@@ -91,7 +91,7 @@ Summary:	Devhelp API documetation
 Summary(pl.UTF-8):	Dokumentacja API Devhelp
 Group:		Documentation
 Requires:	gtk-doc-common
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description apidocs
 Devhelp API documetation.
