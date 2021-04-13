@@ -1,17 +1,17 @@
 #
 # Conditional build:
-%bcond_without  apidocs         # disable gtk-doc
+%bcond_without  apidocs         # gtk-doc based API documentation
 %bcond_without  static_libs     # static library
 
 Summary:	API documentation browser for GNOME
 Summary(pl.UTF-8):	Przeglądarka dokumentacji API dla GNOME
 Name:		devhelp
-Version:	3.38.1
+Version:	40.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/devhelp/3.38/%{name}-%{version}.tar.xz
-# Source0-md5:	ec7631b34d7017cb5a8b5f5b23fa2b1a
+Source0:	https://download.gnome.org/sources/devhelp/40/%{name}-%{version}.tar.xz
+# Source0-md5:	b6aa3010750f1375c900804943a0f6f1
 Patch0:		%{name}-bookdir.patch
 URL:		https://wiki.gnome.org/Apps/Devhelp
 BuildRequires:	amtk-devel >= 5.0
@@ -26,6 +26,7 @@ BuildRequires:	meson >= 0.53
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
 BuildRequires:	python3-devel >= 1:3.3
+BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.752
 BuildRequires:	sed >= 4.0
@@ -99,6 +100,20 @@ Devhelp API documetation.
 %description apidocs -l pl.UTF-8
 Dokumentacja API Devhelp.
 
+%package -n emacs-devhelp
+Summary:	Emacs integration for Devhelp
+Summary(pl.UTF-8):	Integracja Emacsa z Devhelpem
+Group:		Applications/Editors
+Requires:	%{name} = %{version}-%{release}
+Requires:	emacs-common
+BuildArch:	noarch
+
+%description -n emacs-devhelp
+Emacs integration for Devhelp.
+
+%description -n emacs-devhelp -l pl.UTF-8
+Integracja Emacsa z Devhelpem.
+
 %package -n gedit-plugin-devhelp
 Summary:	Devhelp plugin for Gedit editor
 Summary(pl.UTF-8):	Wtyczka devhelpa dla edytora Gedit
@@ -117,6 +132,20 @@ Plugin that allows to browse API documentation in Gedit.
 %description -n gedit-plugin-devhelp -l pl.UTF-8
 Wtyczka umożliwiająca przeglądanie dokumentacji API w edytorze Gedit.
 
+%package -n vim-plugin-devhelp
+Summary:	Vim integration for Devhelp
+Summary(pl.UTF-8):	Integracja Vima z Devhelpem
+Group:		Applications/Editors
+Requires:	%{name} = %{version}-%{release}
+Requires:	vim-rt
+BuildArch:	noarch
+
+%description -n vim-plugin-devhelp
+Vim integration for Devhelp.
+
+%description -n vim-plugin-devhelp -l pl.UTF-8
+Integracja Vima z Devhelpem.
+
 %prep
 %setup -q
 %patch0 -p1
@@ -127,7 +156,10 @@ Wtyczka umożliwiająca przeglądanie dokumentacji API w edytorze Gedit.
 
 %build
 %meson build \
-	%{?with_apidocs:-Dgtk_doc=true}
+	%{?with_apidocs:-Dgtk_doc=true} \
+	-Dplugin_emacs=true \
+	-Dplugin_gedit=true \
+	-Dplugin_vim=true
 
 %ninja_build -C build
 
@@ -200,8 +232,16 @@ rm -rf $RPM_BUILD_ROOT
 %{_gtkdocdir}/devhelp-3
 %endif
 
+%files -n emacs-devhelp
+%defattr(644,root,root,755)
+%{_datadir}/emacs/site-lisp/devhelp.el
+
 %files -n gedit-plugin-devhelp
 %defattr(644,root,root,755)
 %{_libdir}/gedit/plugins/devhelp.plugin
 %{_libdir}/gedit/plugins/devhelp.py
 %{_libdir}/gedit/plugins/__pycache__/devhelp.cpython-*.py[co]
+
+%files -n vim-plugin-devhelp
+%defattr(644,root,root,755)
+%{_datadir}/vim/vimfiles/plugin/devhelp.vim
