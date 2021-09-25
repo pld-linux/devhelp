@@ -6,21 +6,21 @@
 Summary:	API documentation browser for GNOME
 Summary(pl.UTF-8):	Przeglądarka dokumentacji API dla GNOME
 Name:		devhelp
-Version:	40.1
+Version:	41.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/devhelp/40/%{name}-%{version}.tar.xz
-# Source0-md5:	45011ded1cb42512e50b9d4304a4f343
+Source0:	https://download.gnome.org/sources/devhelp/41/%{name}-%{version}.tar.xz
+# Source0-md5:	27ac6c7b8530f364c985432cb38ce5f8
 Patch0:		%{name}-bookdir.patch
 URL:		https://wiki.gnome.org/Apps/Devhelp
-BuildRequires:	amtk-devel >= 5.0
 BuildRequires:	gettext-tools >= 0.19.7
+%{?with_apidocs:BuildRequires:	gi-docgen >= 2021.6}
 BuildRequires:	glib2-devel >= 1:2.64
 BuildRequires:	gobject-introspection-devel >= 1.30.0
 BuildRequires:	gsettings-desktop-schemas-devel
 BuildRequires:	gtk+3-devel >= 3.22.0
-%{?with_apidocs:BuildRequires:	gtk-doc >= 1.25}
+# libsoup3 (webkit2gtk-4.1, >= 2.34) variant is preferred
 BuildRequires:	gtk-webkit4-devel >= 2.26
 BuildRequires:	meson >= 0.53
 BuildRequires:	ninja >= 1.5
@@ -34,7 +34,6 @@ BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	amtk >= 5.0
 Requires:	glib2 >= 1:2.64
 Requires:	gsettings-desktop-schemas
 Requires:	hicolor-icon-theme
@@ -172,6 +171,12 @@ install -d $RPM_BUILD_ROOT%{_datadir}/%{name}/{books,references,specs}
 %py3_comp $RPM_BUILD_ROOT%{_libdir}/gedit/plugins
 %py3_ocomp $RPM_BUILD_ROOT%{_libdir}/gedit/plugins
 
+%if %{with apidocs}
+# FIXME: where to package gi-docgen generated docs?
+install -d $RPM_BUILD_ROOT%{_gtkdocdir}
+%{__mv} $RPM_BUILD_ROOT%{_docdir}/devhelp-3 $RPM_BUILD_ROOT%{_gtkdocdir}
+%endif
+
 %find_lang %{name} --with-gnome
 
 %clean
@@ -190,7 +195,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS NEWS README.md TODO
+%doc NEWS README.md
 %attr(755,root,root) %{_bindir}/devhelp
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/assistant
