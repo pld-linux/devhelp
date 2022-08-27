@@ -6,12 +6,12 @@
 Summary:	API documentation browser for GNOME
 Summary(pl.UTF-8):	Przeglądarka dokumentacji API dla GNOME
 Name:		devhelp
-Version:	41.2
+Version:	41.3
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	https://download.gnome.org/sources/devhelp/41/%{name}-%{version}.tar.xz
-# Source0-md5:	1b0ba87935ff3a06dfa716ca088b7a2d
+# Source0-md5:	f9638a5ef090c83e2ad1543beabe31ea
 Patch0:		%{name}-bookdir.patch
 URL:		https://wiki.gnome.org/Apps/Devhelp
 BuildRequires:	gettext-tools >= 0.19.7
@@ -22,7 +22,7 @@ BuildRequires:	gsettings-desktop-schemas-devel
 BuildRequires:	gtk+3-devel >= 3.22.0
 # libsoup3 (webkit2gtk-4.1, >= 2.34) variant is preferred
 BuildRequires:	gtk-webkit4-devel >= 2.26
-BuildRequires:	meson >= 0.53
+BuildRequires:	meson >= 0.55
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
 BuildRequires:	python3-devel >= 1:3.3
@@ -123,7 +123,7 @@ Requires:	gedit >= 3.8
 Requires:	libpeas-loader-python3
 Requires:	python3 >= 1:3.3
 Requires:	python3-pygobject3 >= 3
-Obsoletes:	gedit2-plugin-devhelp
+Obsoletes:	gedit2-plugin-devhelp < 3.4.1-2
 
 %description -n gedit-plugin-devhelp
 Plugin that allows to browse API documentation in Gedit.
