@@ -6,12 +6,12 @@
 Summary:	API documentation browser for GNOME
 Summary(pl.UTF-8):	Przeglądarka dokumentacji API dla GNOME
 Name:		devhelp
-Version:	41.3
+Version:	43.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/devhelp/41/%{name}-%{version}.tar.xz
-# Source0-md5:	f9638a5ef090c83e2ad1543beabe31ea
+Source0:	https://download.gnome.org/sources/devhelp/43/%{name}-%{version}.tar.xz
+# Source0-md5:	14b56884ae13c4ad7d87036a65b9eaed
 Patch0:		%{name}-bookdir.patch
 URL:		https://wiki.gnome.org/Apps/Devhelp
 BuildRequires:	gettext-tools >= 0.19.7
@@ -20,9 +20,9 @@ BuildRequires:	glib2-devel >= 1:2.64
 BuildRequires:	gobject-introspection-devel >= 1.30.0
 BuildRequires:	gsettings-desktop-schemas-devel
 BuildRequires:	gtk+3-devel >= 3.22.0
-# libsoup3 (webkit2gtk-4.1, >= 2.34) variant is preferred
-BuildRequires:	gtk-webkit4-devel >= 2.26
-BuildRequires:	meson >= 0.55
+# gtk-webkit4-devel >= 2.26 possible as fallback
+BuildRequires:	gtk-webkit4.1-devel >= 2.34
+BuildRequires:	meson >= 0.57
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
 BuildRequires:	python3-devel >= 1:3.3
@@ -51,7 +51,7 @@ Summary(pl.UTF-8):	Biblioteka do osadzania Devhelp w innych aplikacjach
 Group:		X11/Libraries
 Requires:	glib2 >= 1:2.64
 Requires:	gtk+3 >= 3.22.0
-Requires:	gtk-webkit4 >= 2.26
+Requires:	gtk-webkit4.1 >= 2.34
 
 %description libs
 Library of Devhelp for embedding into other applications.
@@ -66,7 +66,7 @@ Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.64
 Requires:	gtk+3-devel >= 3.22.0
-Requires:	gtk-webkit4-devel >= 2.26
+Requires:	gtk-webkit4.1-devel >= 2.34
 
 %description devel
 Headers for Devhelp library.
