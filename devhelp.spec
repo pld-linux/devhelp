@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_without  apidocs         # gtk-doc based API documentation
+%bcond_without  apidocs         # gi-docgen based API documentation
 %bcond_without  static_libs     # static library
 
 Summary:	API documentation browser for GNOME
@@ -90,7 +90,6 @@ Statyczna biblioteka Devhelp.
 Summary:	Devhelp API documetation
 Summary(pl.UTF-8):	Dokumentacja API Devhelp
 Group:		Documentation
-Requires:	gtk-doc-common
 BuildArch:	noarch
 
 %description apidocs
