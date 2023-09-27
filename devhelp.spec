@@ -28,7 +28,7 @@ BuildRequires:	pkgconfig
 BuildRequires:	python3-devel >= 1:3.3
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpm-pythonprov
-BuildRequires:	rpmbuild(macros) >= 1.752
+BuildRequires:	rpmbuild(macros) >= 2.029
 BuildRequires:	sed >= 4.0
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
@@ -172,9 +172,8 @@ install -d $RPM_BUILD_ROOT%{_datadir}/%{name}/{books,references,specs}
 %py3_ocomp $RPM_BUILD_ROOT%{_libdir}/gedit/plugins
 
 %if %{with apidocs}
-# FIXME: where to package gi-docgen generated docs?
-install -d $RPM_BUILD_ROOT%{_gtkdocdir}
-%{__mv} $RPM_BUILD_ROOT%{_docdir}/devhelp-3 $RPM_BUILD_ROOT%{_gtkdocdir}
+install -d $RPM_BUILD_ROOT%{_gidocdir}
+%{__mv} $RPM_BUILD_ROOT%{_docdir}/devhelp-3 $RPM_BUILD_ROOT%{_gidocdir}
 %endif
 
 %find_lang %{name} --with-gnome
@@ -234,7 +233,7 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with apidocs}
 %files apidocs
 %defattr(644,root,root,755)
-%{_gtkdocdir}/devhelp-3
+%{_gidocdir}/devhelp-3
 %endif
 
 %files -n emacs-devhelp
