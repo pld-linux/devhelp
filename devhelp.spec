@@ -146,7 +146,7 @@ Integracja Vima z Devhelpem.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P0 -p1
 
 %if %{with static_libs}
 %{__sed} -i '/libdevhelp_shared_lib = / s/shared_library/library/' devhelp/meson.build
