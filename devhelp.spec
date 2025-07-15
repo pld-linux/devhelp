@@ -153,19 +153,19 @@ Integracja Vima z Devhelpem.
 %endif
 
 %build
-%meson build \
+%meson \
 	%{?with_apidocs:-Dgtk_doc=true} \
 	-Dplugin_emacs=true \
 	-Dplugin_gedit=true \
 	-Dplugin_vim=true
 
-%ninja_build -C build
+%meson_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_datadir}/%{name}/{books,references,specs}
 
-%ninja_install -C build
+%meson_install
 
 %py3_comp $RPM_BUILD_ROOT%{_libdir}/gedit/plugins
 %py3_ocomp $RPM_BUILD_ROOT%{_libdir}/gedit/plugins
