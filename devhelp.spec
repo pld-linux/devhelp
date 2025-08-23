@@ -13,7 +13,7 @@ Group:		X11/Applications
 Source0:	https://download.gnome.org/sources/devhelp/43/%{name}-%{version}.tar.xz
 # Source0-md5:	14b56884ae13c4ad7d87036a65b9eaed
 Patch0:		%{name}-bookdir.patch
-URL:		https://wiki.gnome.org/Apps/Devhelp
+URL:		https://apps.gnome.org/Devhelp/
 BuildRequires:	gettext-tools >= 0.19.7
 %{?with_apidocs:BuildRequires:	gi-docgen >= 2021.6}
 BuildRequires:	glib2-devel >= 1:2.64
