@@ -1,13 +1,14 @@
 #
 # Conditional build:
-%bcond_without  apidocs         # gi-docgen based API documentation
-%bcond_without  static_libs     # static library
+%bcond_without	apidocs		# gi-docgen based API documentation
+%bcond_with	gedit		# gedit plugin (python-based, for gedit < 48.2)
+%bcond_without	static_libs	# static library
 
 Summary:	API documentation browser for GNOME
 Summary(pl.UTF-8):	Przeglądarka dokumentacji API dla GNOME
 Name:		devhelp
 Version:	43.0
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	https://download.gnome.org/sources/devhelp/43/%{name}-%{version}.tar.xz
@@ -156,7 +157,7 @@ Integracja Vima z Devhelpem.
 %meson \
 	%{?with_apidocs:-Dgtk_doc=true} \
 	-Dplugin_emacs=true \
-	-Dplugin_gedit=true \
+	%{?with_gedit:-Dplugin_gedit=true} \
 	-Dplugin_vim=true
 
 %meson_build
@@ -239,11 +240,13 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_datadir}/emacs/site-lisp/devhelp.el
 
+%if %{with gedit}
 %files -n gedit-plugin-devhelp
 %defattr(644,root,root,755)
 %{_libdir}/gedit/plugins/devhelp.plugin
 %{_libdir}/gedit/plugins/devhelp.py
 %{_libdir}/gedit/plugins/__pycache__/devhelp.cpython-*.py[co]
+%endif
 
 %files -n vim-plugin-devhelp
 %defattr(644,root,root,755)
